@@ -1,8 +1,8 @@
 Todo:
 
-1.) custom resistivity color scale + surface electrode positions
-2.) plotly hover txt
-3.) plotly qc graphs
-4.) res2dinv conversion
-5.) topography add + filters + read from DTM
-6.) inversion + julo qc format
++ custom resistivity color scale + surface electrode positions
++ plotly hover txt
++ plotly qc graphs
++ res2dinv conversion
++ topography add + filters + read from DTM
++ inversion + julo qc format
