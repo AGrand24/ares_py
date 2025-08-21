@@ -1,0 +1,610 @@
+Pole-Pole S1	single channel		;method description
+C2,P2		;list of infinite electrodes
+0
+0
+
+10 channels
+;C1	C2	P1	P2	P3	P4	P5	P6	P7	P8	P9	P10	P11	array	receivers
+0	inf	1	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 13,-,-,-,-,-,-,-,-,-,
+0	inf	2	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 25,-,-,-,-,-,-,-,-,-,
+0	inf	3	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 38,-,-,-,-,-,-,-,-,-,
+0	inf	4	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 50,-,-,-,-,-,-,-,-,-,
+0	inf	5	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 63,-,-,-,-,-,-,-,-,-,
+0	inf	6	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 75,-,-,-,-,-,-,-,-,-,
+0	inf	7	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 88,-,-,-,-,-,-,-,-,-,
+0	inf	8	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 101,-,-,-,-,-,-,-,-,-,
+0	inf	9	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 113,-,-,-,-,-,-,-,-,-,
+0	inf	10	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 126,-,-,-,-,-,-,-,-,-,
+0	inf	11	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 138,-,-,-,-,-,-,-,-,-,
+0*1	inf	12	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 151,-,-,-,-,-,-,-,-,-,
+0*1	inf	13	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 163,-,-,-,-,-,-,-,-,-,
+0*1	inf	14	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 176,-,-,-,-,-,-,-,-,-,
+0*1	inf	15	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 188,-,-,-,-,-,-,-,-,-,
+0*1	inf	16	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 201,-,-,-,-,-,-,-,-,-,
+0*1	inf	17	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 214,-,-,-,-,-,-,-,-,-,
+0*1	inf	18	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 226,-,-,-,-,-,-,-,-,-,
+0*1	inf	19	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 239,-,-,-,-,-,-,-,-,-,
+0*1	inf	20	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 251,-,-,-,-,-,-,-,-,-,
+0*1	inf	21	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 264,-,-,-,-,-,-,-,-,-,
+0*1	inf	22	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 276,-,-,-,-,-,-,-,-,-,
+0*1	inf	23	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 289,-,-,-,-,-,-,-,-,-,
+0*2	inf	24	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 302,-,-,-,-,-,-,-,-,-,
+0*2	inf	25	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 314,-,-,-,-,-,-,-,-,-,
+0*2	inf	26	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 327,-,-,-,-,-,-,-,-,-,
+0*2	inf	27	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 339,-,-,-,-,-,-,-,-,-,
+0*2	inf	28	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 352,-,-,-,-,-,-,-,-,-,
+0*2	inf	29	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 364,-,-,-,-,-,-,-,-,-,
+0*2	inf	30	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 377,-,-,-,-,-,-,-,-,-,
+0*2	inf	31	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 390,-,-,-,-,-,-,-,-,-,
+0*2	inf	32	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 402,-,-,-,-,-,-,-,-,-,
+0*2	inf	33	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 415,-,-,-,-,-,-,-,-,-,
+0*2	inf	34	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 427,-,-,-,-,-,-,-,-,-,
+0*2	inf	35	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 440,-,-,-,-,-,-,-,-,-,
+0*3	inf	36	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 452,-,-,-,-,-,-,-,-,-,
+0*3	inf	37	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 465,-,-,-,-,-,-,-,-,-,
+0*3	inf	38	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 478,-,-,-,-,-,-,-,-,-,
+0*3	inf	39	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 490,-,-,-,-,-,-,-,-,-,
+0*3	inf	40	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 503,-,-,-,-,-,-,-,-,-,
+0*3	inf	41	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 515,-,-,-,-,-,-,-,-,-,
+0*3	inf	42	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 528,-,-,-,-,-,-,-,-,-,
+0*3	inf	43	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 540,-,-,-,-,-,-,-,-,-,
+0*3	inf	44	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 553,-,-,-,-,-,-,-,-,-,
+0*3	inf	45	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 565,-,-,-,-,-,-,-,-,-,
+0*3	inf	46	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 578,-,-,-,-,-,-,-,-,-,
+0*3	inf	47	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 591,-,-,-,-,-,-,-,-,-,
+0*4	inf	48	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 603,-,-,-,-,-,-,-,-,-,
+0*4	inf	49	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 616,-,-,-,-,-,-,-,-,-,
+0*4	inf	50	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 628,-,-,-,-,-,-,-,-,-,
+0*4	inf	51	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 641,-,-,-,-,-,-,-,-,-,
+0*4	inf	52	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 653,-,-,-,-,-,-,-,-,-,
+0*4	inf	53	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 666,-,-,-,-,-,-,-,-,-,
+0*4	inf	54	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 679,-,-,-,-,-,-,-,-,-,
+0*4	inf	55	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 691,-,-,-,-,-,-,-,-,-,
+0*4	inf	56	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 704,-,-,-,-,-,-,-,-,-,
+0*4	inf	57	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 716,-,-,-,-,-,-,-,-,-,
+0*4	inf	58	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 729,-,-,-,-,-,-,-,-,-,
+0*4	inf	59	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 741,-,-,-,-,-,-,-,-,-,
+0*5	inf	60	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 754,-,-,-,-,-,-,-,-,-,
+0*5	inf	61	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 767,-,-,-,-,-,-,-,-,-,
+0*5	inf	62	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 779,-,-,-,-,-,-,-,-,-,
+0*5	inf	63	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 792,-,-,-,-,-,-,-,-,-,
+0*5	inf	64	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 804,-,-,-,-,-,-,-,-,-,
+0*5	inf	65	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 817,-,-,-,-,-,-,-,-,-,
+0*5	inf	66	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 829,-,-,-,-,-,-,-,-,-,
+0*5	inf	67	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 842,-,-,-,-,-,-,-,-,-,
+0*5	inf	68	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 855,-,-,-,-,-,-,-,-,-,
+0*5	inf	69	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 867,-,-,-,-,-,-,-,-,-,
+0*5	inf	70	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 880,-,-,-,-,-,-,-,-,-,
+0*5	inf	71	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 892,-,-,-,-,-,-,-,-,-,
+0*6	inf	72	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 905,-,-,-,-,-,-,-,-,-,
+0*6	inf	73	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 917,-,-,-,-,-,-,-,-,-,
+0*6	inf	74	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 930,-,-,-,-,-,-,-,-,-,
+0*6	inf	75	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 942,-,-,-,-,-,-,-,-,-,
+0*6	inf	76	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 955,-,-,-,-,-,-,-,-,-,
+0*6	inf	77	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 968,-,-,-,-,-,-,-,-,-,
+0*6	inf	78	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 980,-,-,-,-,-,-,-,-,-,
+0*6	inf	79	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 993,-,-,-,-,-,-,-,-,-,
+0*6	inf	80	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1005,-,-,-,-,-,-,-,-,-,
+0*6	inf	81	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1018,-,-,-,-,-,-,-,-,-,
+0*6	inf	82	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1030,-,-,-,-,-,-,-,-,-,
+0*6	inf	83	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1043,-,-,-,-,-,-,-,-,-,
+0*7	inf	84	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1056,-,-,-,-,-,-,-,-,-,
+0*7	inf	85	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1068,-,-,-,-,-,-,-,-,-,
+0*7	inf	86	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1081,-,-,-,-,-,-,-,-,-,
+0*7	inf	87	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1093,-,-,-,-,-,-,-,-,-,
+0*7	inf	88	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1106,-,-,-,-,-,-,-,-,-,
+0*7	inf	89	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1118,-,-,-,-,-,-,-,-,-,
+0*7	inf	90	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1131,-,-,-,-,-,-,-,-,-,
+0*7	inf	91	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1144,-,-,-,-,-,-,-,-,-,
+0*7	inf	92	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1156,-,-,-,-,-,-,-,-,-,
+0*7	inf	93	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1169,-,-,-,-,-,-,-,-,-,
+0*7	inf	94	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1181,-,-,-,-,-,-,-,-,-,
+0*7	inf	95	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1194,-,-,-,-,-,-,-,-,-,
+0*8	inf	96	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1206,-,-,-,-,-,-,-,-,-,
+0*8	inf	97	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1219,-,-,-,-,-,-,-,-,-,
+0*8	inf	98	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1232,-,-,-,-,-,-,-,-,-,
+0*8	inf	99	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1244,-,-,-,-,-,-,-,-,-,
+0*8	inf	100	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1257,-,-,-,-,-,-,-,-,-,
+0*8	inf	101	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1269,-,-,-,-,-,-,-,-,-,
+0*8	inf	102	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1282,-,-,-,-,-,-,-,-,-,
+0*8	inf	103	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1294,-,-,-,-,-,-,-,-,-,
+0*8	inf	104	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1307,-,-,-,-,-,-,-,-,-,
+0*8	inf	105	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1319,-,-,-,-,-,-,-,-,-,
+0*8	inf	106	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1332,-,-,-,-,-,-,-,-,-,
+0*8	inf	107	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1345,-,-,-,-,-,-,-,-,-,
+0*9	inf	108	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1357,-,-,-,-,-,-,-,-,-,
+0*9	inf	109	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1370,-,-,-,-,-,-,-,-,-,
+0*9	inf	110	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1382,-,-,-,-,-,-,-,-,-,
+0*9	inf	111	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1395,-,-,-,-,-,-,-,-,-,
+0*9	inf	112	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1407,-,-,-,-,-,-,-,-,-,
+0*9	inf	113	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1420,-,-,-,-,-,-,-,-,-,
+0*9	inf	114	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1433,-,-,-,-,-,-,-,-,-,
+0*9	inf	115	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1445,-,-,-,-,-,-,-,-,-,
+0*9	inf	116	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1458,-,-,-,-,-,-,-,-,-,
+0*9	inf	117	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1470,-,-,-,-,-,-,-,-,-,
+0*9	inf	118	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1483,-,-,-,-,-,-,-,-,-,
+0*9	inf	119	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1495,-,-,-,-,-,-,-,-,-,
+0*10	inf	120	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1508,-,-,-,-,-,-,-,-,-,
+0*10	inf	121	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1521,-,-,-,-,-,-,-,-,-,
+0*10	inf	122	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1533,-,-,-,-,-,-,-,-,-,
+0*10	inf	123	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1546,-,-,-,-,-,-,-,-,-,
+0*10	inf	124	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1558,-,-,-,-,-,-,-,-,-,
+0*10	inf	125	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1571,-,-,-,-,-,-,-,-,-,
+0*10	inf	126	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1583,-,-,-,-,-,-,-,-,-,
+0*10	inf	127	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1596,-,-,-,-,-,-,-,-,-,
+0*10	inf	128	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1608,-,-,-,-,-,-,-,-,-,
+0*10	inf	129	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1621,-,-,-,-,-,-,-,-,-,
+0*10	inf	130	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1634,-,-,-,-,-,-,-,-,-,
+0*10	inf	131	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1646,-,-,-,-,-,-,-,-,-,
+0*11	inf	132	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1659,-,-,-,-,-,-,-,-,-,
+0*11	inf	133	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1671,-,-,-,-,-,-,-,-,-,
+0*11	inf	134	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1684,-,-,-,-,-,-,-,-,-,
+0*11	inf	135	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1696,-,-,-,-,-,-,-,-,-,
+0*11	inf	136	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1709,-,-,-,-,-,-,-,-,-,
+0*11	inf	137	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1722,-,-,-,-,-,-,-,-,-,
+0*11	inf	138	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1734,-,-,-,-,-,-,-,-,-,
+0*11	inf	139	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1747,-,-,-,-,-,-,-,-,-,
+0*11	inf	140	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1759,-,-,-,-,-,-,-,-,-,
+0*11	inf	141	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1772,-,-,-,-,-,-,-,-,-,
+0*11	inf	142	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1784,-,-,-,-,-,-,-,-,-,
+0*11	inf	143	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1797,-,-,-,-,-,-,-,-,-,
+0*12	inf	144	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1810,-,-,-,-,-,-,-,-,-,
+0*12	inf	145	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1822,-,-,-,-,-,-,-,-,-,
+0*12	inf	146	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1835,-,-,-,-,-,-,-,-,-,
+0*12	inf	147	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1847,-,-,-,-,-,-,-,-,-,
+0*12	inf	148	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1860,-,-,-,-,-,-,-,-,-,
+0*12	inf	149	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1872,-,-,-,-,-,-,-,-,-,
+0*12	inf	150	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1885,-,-,-,-,-,-,-,-,-,
+0*12	inf	151	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1898,-,-,-,-,-,-,-,-,-,
+0*12	inf	152	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1910,-,-,-,-,-,-,-,-,-,
+0*12	inf	153	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1923,-,-,-,-,-,-,-,-,-,
+0*12	inf	154	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1935,-,-,-,-,-,-,-,-,-,
+0*12	inf	155	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1948,-,-,-,-,-,-,-,-,-,
+0*13	inf	156	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1960,-,-,-,-,-,-,-,-,-,
+0*13	inf	157	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1973,-,-,-,-,-,-,-,-,-,
+0*13	inf	158	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1985,-,-,-,-,-,-,-,-,-,
+0*13	inf	159	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1998,-,-,-,-,-,-,-,-,-,
+0*13	inf	160	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2011,-,-,-,-,-,-,-,-,-,
+0*13	inf	161	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2023,-,-,-,-,-,-,-,-,-,
+0*13	inf	162	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2036,-,-,-,-,-,-,-,-,-,
+0*13	inf	163	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2048,-,-,-,-,-,-,-,-,-,
+0*13	inf	164	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2061,-,-,-,-,-,-,-,-,-,
+0*13	inf	165	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2073,-,-,-,-,-,-,-,-,-,
+0*13	inf	166	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2086,-,-,-,-,-,-,-,-,-,
+0*13	inf	167	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2099,-,-,-,-,-,-,-,-,-,
+0*14	inf	168	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2111,-,-,-,-,-,-,-,-,-,
+0*14	inf	169	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2124,-,-,-,-,-,-,-,-,-,
+0*14	inf	170	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2136,-,-,-,-,-,-,-,-,-,
+0*14	inf	171	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2149,-,-,-,-,-,-,-,-,-,
+0*14	inf	172	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2161,-,-,-,-,-,-,-,-,-,
+0*14	inf	173	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2174,-,-,-,-,-,-,-,-,-,
+0*14	inf	174	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2187,-,-,-,-,-,-,-,-,-,
+0*14	inf	175	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2199,-,-,-,-,-,-,-,-,-,
+0*14	inf	176	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2212,-,-,-,-,-,-,-,-,-,
+0*14	inf	177	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2224,-,-,-,-,-,-,-,-,-,
+0*14	inf	178	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2237,-,-,-,-,-,-,-,-,-,
+0*14	inf	179	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2249,-,-,-,-,-,-,-,-,-,
+0*15	inf	180	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2262,-,-,-,-,-,-,-,-,-,
+0*15	inf	181	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2275,-,-,-,-,-,-,-,-,-,
+0*15	inf	182	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2287,-,-,-,-,-,-,-,-,-,
+0*15	inf	183	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2300,-,-,-,-,-,-,-,-,-,
+0*15	inf	184	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2312,-,-,-,-,-,-,-,-,-,
+0*15	inf	185	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2325,-,-,-,-,-,-,-,-,-,
+0*15	inf	186	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2337,-,-,-,-,-,-,-,-,-,
+0*15	inf	187	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2350,-,-,-,-,-,-,-,-,-,
+0*15	inf	188	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2362,-,-,-,-,-,-,-,-,-,
+0*15	inf	189	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2375,-,-,-,-,-,-,-,-,-,
+0*15	inf	190	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2388,-,-,-,-,-,-,-,-,-,
+0*15	inf	191	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2400,-,-,-,-,-,-,-,-,-,
+0*16	inf	192	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2413,-,-,-,-,-,-,-,-,-,
+0*16	inf	193	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2425,-,-,-,-,-,-,-,-,-,
+0*16	inf	194	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2438,-,-,-,-,-,-,-,-,-,
+0*16	inf	195	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2450,-,-,-,-,-,-,-,-,-,
+0*16	inf	196	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2463,-,-,-,-,-,-,-,-,-,
+0*16	inf	197	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2476,-,-,-,-,-,-,-,-,-,
+0*16	inf	198	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2488,-,-,-,-,-,-,-,-,-,
+0*16	inf	199	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2501,-,-,-,-,-,-,-,-,-,
+
+5 channels
+;C1	C2	P1	P2	P3	P4	P5	P6	P7	P8	P9	P10	P11	array	receivers
+0	inf	1	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 13,-,-,-,-,-,-,-,-,-,
+0	inf	2	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 25,-,-,-,-,-,-,-,-,-,
+0	inf	3	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 38,-,-,-,-,-,-,-,-,-,
+0	inf	4	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 50,-,-,-,-,-,-,-,-,-,
+0	inf	5	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 63,-,-,-,-,-,-,-,-,-,
+0	inf	6	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 75,-,-,-,-,-,-,-,-,-,
+0	inf	7	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 88,-,-,-,-,-,-,-,-,-,
+0	inf	8	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 101,-,-,-,-,-,-,-,-,-,
+0	inf	9	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 113,-,-,-,-,-,-,-,-,-,
+0	inf	10	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 126,-,-,-,-,-,-,-,-,-,
+0	inf	11	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 138,-,-,-,-,-,-,-,-,-,
+0*1	inf	12	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 151,-,-,-,-,-,-,-,-,-,
+0*1	inf	13	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 163,-,-,-,-,-,-,-,-,-,
+0*1	inf	14	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 176,-,-,-,-,-,-,-,-,-,
+0*1	inf	15	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 188,-,-,-,-,-,-,-,-,-,
+0*1	inf	16	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 201,-,-,-,-,-,-,-,-,-,
+0*1	inf	17	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 214,-,-,-,-,-,-,-,-,-,
+0*1	inf	18	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 226,-,-,-,-,-,-,-,-,-,
+0*1	inf	19	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 239,-,-,-,-,-,-,-,-,-,
+0*1	inf	20	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 251,-,-,-,-,-,-,-,-,-,
+0*1	inf	21	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 264,-,-,-,-,-,-,-,-,-,
+0*1	inf	22	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 276,-,-,-,-,-,-,-,-,-,
+0*1	inf	23	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 289,-,-,-,-,-,-,-,-,-,
+0*2	inf	24	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 302,-,-,-,-,-,-,-,-,-,
+0*2	inf	25	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 314,-,-,-,-,-,-,-,-,-,
+0*2	inf	26	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 327,-,-,-,-,-,-,-,-,-,
+0*2	inf	27	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 339,-,-,-,-,-,-,-,-,-,
+0*2	inf	28	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 352,-,-,-,-,-,-,-,-,-,
+0*2	inf	29	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 364,-,-,-,-,-,-,-,-,-,
+0*2	inf	30	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 377,-,-,-,-,-,-,-,-,-,
+0*2	inf	31	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 390,-,-,-,-,-,-,-,-,-,
+0*2	inf	32	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 402,-,-,-,-,-,-,-,-,-,
+0*2	inf	33	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 415,-,-,-,-,-,-,-,-,-,
+0*2	inf	34	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 427,-,-,-,-,-,-,-,-,-,
+0*2	inf	35	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 440,-,-,-,-,-,-,-,-,-,
+0*3	inf	36	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 452,-,-,-,-,-,-,-,-,-,
+0*3	inf	37	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 465,-,-,-,-,-,-,-,-,-,
+0*3	inf	38	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 478,-,-,-,-,-,-,-,-,-,
+0*3	inf	39	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 490,-,-,-,-,-,-,-,-,-,
+0*3	inf	40	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 503,-,-,-,-,-,-,-,-,-,
+0*3	inf	41	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 515,-,-,-,-,-,-,-,-,-,
+0*3	inf	42	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 528,-,-,-,-,-,-,-,-,-,
+0*3	inf	43	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 540,-,-,-,-,-,-,-,-,-,
+0*3	inf	44	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 553,-,-,-,-,-,-,-,-,-,
+0*3	inf	45	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 565,-,-,-,-,-,-,-,-,-,
+0*3	inf	46	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 578,-,-,-,-,-,-,-,-,-,
+0*3	inf	47	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 591,-,-,-,-,-,-,-,-,-,
+0*4	inf	48	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 603,-,-,-,-,-,-,-,-,-,
+0*4	inf	49	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 616,-,-,-,-,-,-,-,-,-,
+0*4	inf	50	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 628,-,-,-,-,-,-,-,-,-,
+0*4	inf	51	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 641,-,-,-,-,-,-,-,-,-,
+0*4	inf	52	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 653,-,-,-,-,-,-,-,-,-,
+0*4	inf	53	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 666,-,-,-,-,-,-,-,-,-,
+0*4	inf	54	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 679,-,-,-,-,-,-,-,-,-,
+0*4	inf	55	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 691,-,-,-,-,-,-,-,-,-,
+0*4	inf	56	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 704,-,-,-,-,-,-,-,-,-,
+0*4	inf	57	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 716,-,-,-,-,-,-,-,-,-,
+0*4	inf	58	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 729,-,-,-,-,-,-,-,-,-,
+0*4	inf	59	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 741,-,-,-,-,-,-,-,-,-,
+0*5	inf	60	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 754,-,-,-,-,-,-,-,-,-,
+0*5	inf	61	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 767,-,-,-,-,-,-,-,-,-,
+0*5	inf	62	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 779,-,-,-,-,-,-,-,-,-,
+0*5	inf	63	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 792,-,-,-,-,-,-,-,-,-,
+0*5	inf	64	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 804,-,-,-,-,-,-,-,-,-,
+0*5	inf	65	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 817,-,-,-,-,-,-,-,-,-,
+0*5	inf	66	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 829,-,-,-,-,-,-,-,-,-,
+0*5	inf	67	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 842,-,-,-,-,-,-,-,-,-,
+0*5	inf	68	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 855,-,-,-,-,-,-,-,-,-,
+0*5	inf	69	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 867,-,-,-,-,-,-,-,-,-,
+0*5	inf	70	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 880,-,-,-,-,-,-,-,-,-,
+0*5	inf	71	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 892,-,-,-,-,-,-,-,-,-,
+0*6	inf	72	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 905,-,-,-,-,-,-,-,-,-,
+0*6	inf	73	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 917,-,-,-,-,-,-,-,-,-,
+0*6	inf	74	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 930,-,-,-,-,-,-,-,-,-,
+0*6	inf	75	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 942,-,-,-,-,-,-,-,-,-,
+0*6	inf	76	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 955,-,-,-,-,-,-,-,-,-,
+0*6	inf	77	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 968,-,-,-,-,-,-,-,-,-,
+0*6	inf	78	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 980,-,-,-,-,-,-,-,-,-,
+0*6	inf	79	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 993,-,-,-,-,-,-,-,-,-,
+0*6	inf	80	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1005,-,-,-,-,-,-,-,-,-,
+0*6	inf	81	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1018,-,-,-,-,-,-,-,-,-,
+0*6	inf	82	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1030,-,-,-,-,-,-,-,-,-,
+0*6	inf	83	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1043,-,-,-,-,-,-,-,-,-,
+0*7	inf	84	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1056,-,-,-,-,-,-,-,-,-,
+0*7	inf	85	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1068,-,-,-,-,-,-,-,-,-,
+0*7	inf	86	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1081,-,-,-,-,-,-,-,-,-,
+0*7	inf	87	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1093,-,-,-,-,-,-,-,-,-,
+0*7	inf	88	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1106,-,-,-,-,-,-,-,-,-,
+0*7	inf	89	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1118,-,-,-,-,-,-,-,-,-,
+0*7	inf	90	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1131,-,-,-,-,-,-,-,-,-,
+0*7	inf	91	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1144,-,-,-,-,-,-,-,-,-,
+0*7	inf	92	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1156,-,-,-,-,-,-,-,-,-,
+0*7	inf	93	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1169,-,-,-,-,-,-,-,-,-,
+0*7	inf	94	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1181,-,-,-,-,-,-,-,-,-,
+0*7	inf	95	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1194,-,-,-,-,-,-,-,-,-,
+0*8	inf	96	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1206,-,-,-,-,-,-,-,-,-,
+0*8	inf	97	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1219,-,-,-,-,-,-,-,-,-,
+0*8	inf	98	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1232,-,-,-,-,-,-,-,-,-,
+0*8	inf	99	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1244,-,-,-,-,-,-,-,-,-,
+0*8	inf	100	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1257,-,-,-,-,-,-,-,-,-,
+0*8	inf	101	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1269,-,-,-,-,-,-,-,-,-,
+0*8	inf	102	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1282,-,-,-,-,-,-,-,-,-,
+0*8	inf	103	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1294,-,-,-,-,-,-,-,-,-,
+0*8	inf	104	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1307,-,-,-,-,-,-,-,-,-,
+0*8	inf	105	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1319,-,-,-,-,-,-,-,-,-,
+0*8	inf	106	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1332,-,-,-,-,-,-,-,-,-,
+0*8	inf	107	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1345,-,-,-,-,-,-,-,-,-,
+0*9	inf	108	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1357,-,-,-,-,-,-,-,-,-,
+0*9	inf	109	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1370,-,-,-,-,-,-,-,-,-,
+0*9	inf	110	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1382,-,-,-,-,-,-,-,-,-,
+0*9	inf	111	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1395,-,-,-,-,-,-,-,-,-,
+0*9	inf	112	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1407,-,-,-,-,-,-,-,-,-,
+0*9	inf	113	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1420,-,-,-,-,-,-,-,-,-,
+0*9	inf	114	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1433,-,-,-,-,-,-,-,-,-,
+0*9	inf	115	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1445,-,-,-,-,-,-,-,-,-,
+0*9	inf	116	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1458,-,-,-,-,-,-,-,-,-,
+0*9	inf	117	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1470,-,-,-,-,-,-,-,-,-,
+0*9	inf	118	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1483,-,-,-,-,-,-,-,-,-,
+0*9	inf	119	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1495,-,-,-,-,-,-,-,-,-,
+0*10	inf	120	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1508,-,-,-,-,-,-,-,-,-,
+0*10	inf	121	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1521,-,-,-,-,-,-,-,-,-,
+0*10	inf	122	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1533,-,-,-,-,-,-,-,-,-,
+0*10	inf	123	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1546,-,-,-,-,-,-,-,-,-,
+0*10	inf	124	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1558,-,-,-,-,-,-,-,-,-,
+0*10	inf	125	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1571,-,-,-,-,-,-,-,-,-,
+0*10	inf	126	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1583,-,-,-,-,-,-,-,-,-,
+0*10	inf	127	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1596,-,-,-,-,-,-,-,-,-,
+0*10	inf	128	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1608,-,-,-,-,-,-,-,-,-,
+0*10	inf	129	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1621,-,-,-,-,-,-,-,-,-,
+0*10	inf	130	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1634,-,-,-,-,-,-,-,-,-,
+0*10	inf	131	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1646,-,-,-,-,-,-,-,-,-,
+0*11	inf	132	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1659,-,-,-,-,-,-,-,-,-,
+0*11	inf	133	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1671,-,-,-,-,-,-,-,-,-,
+0*11	inf	134	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1684,-,-,-,-,-,-,-,-,-,
+0*11	inf	135	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1696,-,-,-,-,-,-,-,-,-,
+0*11	inf	136	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1709,-,-,-,-,-,-,-,-,-,
+0*11	inf	137	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1722,-,-,-,-,-,-,-,-,-,
+0*11	inf	138	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1734,-,-,-,-,-,-,-,-,-,
+0*11	inf	139	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1747,-,-,-,-,-,-,-,-,-,
+0*11	inf	140	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1759,-,-,-,-,-,-,-,-,-,
+0*11	inf	141	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1772,-,-,-,-,-,-,-,-,-,
+0*11	inf	142	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1784,-,-,-,-,-,-,-,-,-,
+0*11	inf	143	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1797,-,-,-,-,-,-,-,-,-,
+0*12	inf	144	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1810,-,-,-,-,-,-,-,-,-,
+0*12	inf	145	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1822,-,-,-,-,-,-,-,-,-,
+0*12	inf	146	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1835,-,-,-,-,-,-,-,-,-,
+0*12	inf	147	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1847,-,-,-,-,-,-,-,-,-,
+0*12	inf	148	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1860,-,-,-,-,-,-,-,-,-,
+0*12	inf	149	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1872,-,-,-,-,-,-,-,-,-,
+0*12	inf	150	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1885,-,-,-,-,-,-,-,-,-,
+0*12	inf	151	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1898,-,-,-,-,-,-,-,-,-,
+0*12	inf	152	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1910,-,-,-,-,-,-,-,-,-,
+0*12	inf	153	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1923,-,-,-,-,-,-,-,-,-,
+0*12	inf	154	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1935,-,-,-,-,-,-,-,-,-,
+0*12	inf	155	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1948,-,-,-,-,-,-,-,-,-,
+0*13	inf	156	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1960,-,-,-,-,-,-,-,-,-,
+0*13	inf	157	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1973,-,-,-,-,-,-,-,-,-,
+0*13	inf	158	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1985,-,-,-,-,-,-,-,-,-,
+0*13	inf	159	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 1998,-,-,-,-,-,-,-,-,-,
+0*13	inf	160	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2011,-,-,-,-,-,-,-,-,-,
+0*13	inf	161	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2023,-,-,-,-,-,-,-,-,-,
+0*13	inf	162	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2036,-,-,-,-,-,-,-,-,-,
+0*13	inf	163	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2048,-,-,-,-,-,-,-,-,-,
+0*13	inf	164	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2061,-,-,-,-,-,-,-,-,-,
+0*13	inf	165	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2073,-,-,-,-,-,-,-,-,-,
+0*13	inf	166	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2086,-,-,-,-,-,-,-,-,-,
+0*13	inf	167	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2099,-,-,-,-,-,-,-,-,-,
+0*14	inf	168	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2111,-,-,-,-,-,-,-,-,-,
+0*14	inf	169	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2124,-,-,-,-,-,-,-,-,-,
+0*14	inf	170	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2136,-,-,-,-,-,-,-,-,-,
+0*14	inf	171	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2149,-,-,-,-,-,-,-,-,-,
+0*14	inf	172	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2161,-,-,-,-,-,-,-,-,-,
+0*14	inf	173	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2174,-,-,-,-,-,-,-,-,-,
+0*14	inf	174	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2187,-,-,-,-,-,-,-,-,-,
+0*14	inf	175	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2199,-,-,-,-,-,-,-,-,-,
+0*14	inf	176	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2212,-,-,-,-,-,-,-,-,-,
+0*14	inf	177	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2224,-,-,-,-,-,-,-,-,-,
+0*14	inf	178	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2237,-,-,-,-,-,-,-,-,-,
+0*14	inf	179	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2249,-,-,-,-,-,-,-,-,-,
+0*15	inf	180	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2262,-,-,-,-,-,-,-,-,-,
+0*15	inf	181	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2275,-,-,-,-,-,-,-,-,-,
+0*15	inf	182	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2287,-,-,-,-,-,-,-,-,-,
+0*15	inf	183	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2300,-,-,-,-,-,-,-,-,-,
+0*15	inf	184	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2312,-,-,-,-,-,-,-,-,-,
+0*15	inf	185	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2325,-,-,-,-,-,-,-,-,-,
+0*15	inf	186	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2337,-,-,-,-,-,-,-,-,-,
+0*15	inf	187	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2350,-,-,-,-,-,-,-,-,-,
+0*15	inf	188	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2362,-,-,-,-,-,-,-,-,-,
+0*15	inf	189	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2375,-,-,-,-,-,-,-,-,-,
+0*15	inf	190	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2388,-,-,-,-,-,-,-,-,-,
+0*15	inf	191	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2400,-,-,-,-,-,-,-,-,-,
+0*16	inf	192	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2413,-,-,-,-,-,-,-,-,-,
+0*16	inf	193	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2425,-,-,-,-,-,-,-,-,-,
+0*16	inf	194	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2438,-,-,-,-,-,-,-,-,-,
+0*16	inf	195	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2450,-,-,-,-,-,-,-,-,-,
+0*16	inf	196	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2463,-,-,-,-,-,-,-,-,-,
+0*16	inf	197	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2476,-,-,-,-,-,-,-,-,-,
+0*16	inf	198	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2488,-,-,-,-,-,-,-,-,-,
+0*16	inf	199	inf	-	-	-	-	-	-	-	-	-	PP	0	;geom.fact.(dist. 2m): 2501,-,-,-,-,-,-,-,-,-,
+
+1 channel
+;C1	C2	P1	P2	array
+0	inf	1	inf	PP	;geom.fact.(dist. 2m): 13
+0	inf	2	inf	PP	;geom.fact.(dist. 2m): 25
+0	inf	3	inf	PP	;geom.fact.(dist. 2m): 38
+0	inf	4	inf	PP	;geom.fact.(dist. 2m): 50
+0	inf	5	inf	PP	;geom.fact.(dist. 2m): 63
+0	inf	6	inf	PP	;geom.fact.(dist. 2m): 75
+0	inf	7	inf	PP	;geom.fact.(dist. 2m): 88
+0	inf	8	inf	PP	;geom.fact.(dist. 2m): 101
+0	inf	9	inf	PP	;geom.fact.(dist. 2m): 113
+0	inf	10	inf	PP	;geom.fact.(dist. 2m): 126
+0	inf	11	inf	PP	;geom.fact.(dist. 2m): 138
+0*1	inf	12	inf	PP	;geom.fact.(dist. 2m): 151
+0*1	inf	13	inf	PP	;geom.fact.(dist. 2m): 163
+0*1	inf	14	inf	PP	;geom.fact.(dist. 2m): 176
+0*1	inf	15	inf	PP	;geom.fact.(dist. 2m): 188
+0*1	inf	16	inf	PP	;geom.fact.(dist. 2m): 201
+0*1	inf	17	inf	PP	;geom.fact.(dist. 2m): 214
+0*1	inf	18	inf	PP	;geom.fact.(dist. 2m): 226
+0*1	inf	19	inf	PP	;geom.fact.(dist. 2m): 239
+0*1	inf	20	inf	PP	;geom.fact.(dist. 2m): 251
+0*1	inf	21	inf	PP	;geom.fact.(dist. 2m): 264
+0*1	inf	22	inf	PP	;geom.fact.(dist. 2m): 276
+0*1	inf	23	inf	PP	;geom.fact.(dist. 2m): 289
+0*2	inf	24	inf	PP	;geom.fact.(dist. 2m): 302
+0*2	inf	25	inf	PP	;geom.fact.(dist. 2m): 314
+0*2	inf	26	inf	PP	;geom.fact.(dist. 2m): 327
+0*2	inf	27	inf	PP	;geom.fact.(dist. 2m): 339
+0*2	inf	28	inf	PP	;geom.fact.(dist. 2m): 352
+0*2	inf	29	inf	PP	;geom.fact.(dist. 2m): 364
+0*2	inf	30	inf	PP	;geom.fact.(dist. 2m): 377
+0*2	inf	31	inf	PP	;geom.fact.(dist. 2m): 390
+0*2	inf	32	inf	PP	;geom.fact.(dist. 2m): 402
+0*2	inf	33	inf	PP	;geom.fact.(dist. 2m): 415
+0*2	inf	34	inf	PP	;geom.fact.(dist. 2m): 427
+0*2	inf	35	inf	PP	;geom.fact.(dist. 2m): 440
+0*3	inf	36	inf	PP	;geom.fact.(dist. 2m): 452
+0*3	inf	37	inf	PP	;geom.fact.(dist. 2m): 465
+0*3	inf	38	inf	PP	;geom.fact.(dist. 2m): 478
+0*3	inf	39	inf	PP	;geom.fact.(dist. 2m): 490
+0*3	inf	40	inf	PP	;geom.fact.(dist. 2m): 503
+0*3	inf	41	inf	PP	;geom.fact.(dist. 2m): 515
+0*3	inf	42	inf	PP	;geom.fact.(dist. 2m): 528
+0*3	inf	43	inf	PP	;geom.fact.(dist. 2m): 540
+0*3	inf	44	inf	PP	;geom.fact.(dist. 2m): 553
+0*3	inf	45	inf	PP	;geom.fact.(dist. 2m): 565
+0*3	inf	46	inf	PP	;geom.fact.(dist. 2m): 578
+0*3	inf	47	inf	PP	;geom.fact.(dist. 2m): 591
+0*4	inf	48	inf	PP	;geom.fact.(dist. 2m): 603
+0*4	inf	49	inf	PP	;geom.fact.(dist. 2m): 616
+0*4	inf	50	inf	PP	;geom.fact.(dist. 2m): 628
+0*4	inf	51	inf	PP	;geom.fact.(dist. 2m): 641
+0*4	inf	52	inf	PP	;geom.fact.(dist. 2m): 653
+0*4	inf	53	inf	PP	;geom.fact.(dist. 2m): 666
+0*4	inf	54	inf	PP	;geom.fact.(dist. 2m): 679
+0*4	inf	55	inf	PP	;geom.fact.(dist. 2m): 691
+0*4	inf	56	inf	PP	;geom.fact.(dist. 2m): 704
+0*4	inf	57	inf	PP	;geom.fact.(dist. 2m): 716
+0*4	inf	58	inf	PP	;geom.fact.(dist. 2m): 729
+0*4	inf	59	inf	PP	;geom.fact.(dist. 2m): 741
+0*5	inf	60	inf	PP	;geom.fact.(dist. 2m): 754
+0*5	inf	61	inf	PP	;geom.fact.(dist. 2m): 767
+0*5	inf	62	inf	PP	;geom.fact.(dist. 2m): 779
+0*5	inf	63	inf	PP	;geom.fact.(dist. 2m): 792
+0*5	inf	64	inf	PP	;geom.fact.(dist. 2m): 804
+0*5	inf	65	inf	PP	;geom.fact.(dist. 2m): 817
+0*5	inf	66	inf	PP	;geom.fact.(dist. 2m): 829
+0*5	inf	67	inf	PP	;geom.fact.(dist. 2m): 842
+0*5	inf	68	inf	PP	;geom.fact.(dist. 2m): 855
+0*5	inf	69	inf	PP	;geom.fact.(dist. 2m): 867
+0*5	inf	70	inf	PP	;geom.fact.(dist. 2m): 880
+0*5	inf	71	inf	PP	;geom.fact.(dist. 2m): 892
+0*6	inf	72	inf	PP	;geom.fact.(dist. 2m): 905
+0*6	inf	73	inf	PP	;geom.fact.(dist. 2m): 917
+0*6	inf	74	inf	PP	;geom.fact.(dist. 2m): 930
+0*6	inf	75	inf	PP	;geom.fact.(dist. 2m): 942
+0*6	inf	76	inf	PP	;geom.fact.(dist. 2m): 955
+0*6	inf	77	inf	PP	;geom.fact.(dist. 2m): 968
+0*6	inf	78	inf	PP	;geom.fact.(dist. 2m): 980
+0*6	inf	79	inf	PP	;geom.fact.(dist. 2m): 993
+0*6	inf	80	inf	PP	;geom.fact.(dist. 2m): 1005
+0*6	inf	81	inf	PP	;geom.fact.(dist. 2m): 1018
+0*6	inf	82	inf	PP	;geom.fact.(dist. 2m): 1030
+0*6	inf	83	inf	PP	;geom.fact.(dist. 2m): 1043
+0*7	inf	84	inf	PP	;geom.fact.(dist. 2m): 1056
+0*7	inf	85	inf	PP	;geom.fact.(dist. 2m): 1068
+0*7	inf	86	inf	PP	;geom.fact.(dist. 2m): 1081
+0*7	inf	87	inf	PP	;geom.fact.(dist. 2m): 1093
+0*7	inf	88	inf	PP	;geom.fact.(dist. 2m): 1106
+0*7	inf	89	inf	PP	;geom.fact.(dist. 2m): 1118
+0*7	inf	90	inf	PP	;geom.fact.(dist. 2m): 1131
+0*7	inf	91	inf	PP	;geom.fact.(dist. 2m): 1144
+0*7	inf	92	inf	PP	;geom.fact.(dist. 2m): 1156
+0*7	inf	93	inf	PP	;geom.fact.(dist. 2m): 1169
+0*7	inf	94	inf	PP	;geom.fact.(dist. 2m): 1181
+0*7	inf	95	inf	PP	;geom.fact.(dist. 2m): 1194
+0*8	inf	96	inf	PP	;geom.fact.(dist. 2m): 1206
+0*8	inf	97	inf	PP	;geom.fact.(dist. 2m): 1219
+0*8	inf	98	inf	PP	;geom.fact.(dist. 2m): 1232
+0*8	inf	99	inf	PP	;geom.fact.(dist. 2m): 1244
+0*8	inf	100	inf	PP	;geom.fact.(dist. 2m): 1257
+0*8	inf	101	inf	PP	;geom.fact.(dist. 2m): 1269
+0*8	inf	102	inf	PP	;geom.fact.(dist. 2m): 1282
+0*8	inf	103	inf	PP	;geom.fact.(dist. 2m): 1294
+0*8	inf	104	inf	PP	;geom.fact.(dist. 2m): 1307
+0*8	inf	105	inf	PP	;geom.fact.(dist. 2m): 1319
+0*8	inf	106	inf	PP	;geom.fact.(dist. 2m): 1332
+0*8	inf	107	inf	PP	;geom.fact.(dist. 2m): 1345
+0*9	inf	108	inf	PP	;geom.fact.(dist. 2m): 1357
+0*9	inf	109	inf	PP	;geom.fact.(dist. 2m): 1370
+0*9	inf	110	inf	PP	;geom.fact.(dist. 2m): 1382
+0*9	inf	111	inf	PP	;geom.fact.(dist. 2m): 1395
+0*9	inf	112	inf	PP	;geom.fact.(dist. 2m): 1407
+0*9	inf	113	inf	PP	;geom.fact.(dist. 2m): 1420
+0*9	inf	114	inf	PP	;geom.fact.(dist. 2m): 1433
+0*9	inf	115	inf	PP	;geom.fact.(dist. 2m): 1445
+0*9	inf	116	inf	PP	;geom.fact.(dist. 2m): 1458
+0*9	inf	117	inf	PP	;geom.fact.(dist. 2m): 1470
+0*9	inf	118	inf	PP	;geom.fact.(dist. 2m): 1483
+0*9	inf	119	inf	PP	;geom.fact.(dist. 2m): 1495
+0*10	inf	120	inf	PP	;geom.fact.(dist. 2m): 1508
+0*10	inf	121	inf	PP	;geom.fact.(dist. 2m): 1521
+0*10	inf	122	inf	PP	;geom.fact.(dist. 2m): 1533
+0*10	inf	123	inf	PP	;geom.fact.(dist. 2m): 1546
+0*10	inf	124	inf	PP	;geom.fact.(dist. 2m): 1558
+0*10	inf	125	inf	PP	;geom.fact.(dist. 2m): 1571
+0*10	inf	126	inf	PP	;geom.fact.(dist. 2m): 1583
+0*10	inf	127	inf	PP	;geom.fact.(dist. 2m): 1596
+0*10	inf	128	inf	PP	;geom.fact.(dist. 2m): 1608
+0*10	inf	129	inf	PP	;geom.fact.(dist. 2m): 1621
+0*10	inf	130	inf	PP	;geom.fact.(dist. 2m): 1634
+0*10	inf	131	inf	PP	;geom.fact.(dist. 2m): 1646
+0*11	inf	132	inf	PP	;geom.fact.(dist. 2m): 1659
+0*11	inf	133	inf	PP	;geom.fact.(dist. 2m): 1671
+0*11	inf	134	inf	PP	;geom.fact.(dist. 2m): 1684
+0*11	inf	135	inf	PP	;geom.fact.(dist. 2m): 1696
+0*11	inf	136	inf	PP	;geom.fact.(dist. 2m): 1709
+0*11	inf	137	inf	PP	;geom.fact.(dist. 2m): 1722
+0*11	inf	138	inf	PP	;geom.fact.(dist. 2m): 1734
+0*11	inf	139	inf	PP	;geom.fact.(dist. 2m): 1747
+0*11	inf	140	inf	PP	;geom.fact.(dist. 2m): 1759
+0*11	inf	141	inf	PP	;geom.fact.(dist. 2m): 1772
+0*11	inf	142	inf	PP	;geom.fact.(dist. 2m): 1784
+0*11	inf	143	inf	PP	;geom.fact.(dist. 2m): 1797
+0*12	inf	144	inf	PP	;geom.fact.(dist. 2m): 1810
+0*12	inf	145	inf	PP	;geom.fact.(dist. 2m): 1822
+0*12	inf	146	inf	PP	;geom.fact.(dist. 2m): 1835
+0*12	inf	147	inf	PP	;geom.fact.(dist. 2m): 1847
+0*12	inf	148	inf	PP	;geom.fact.(dist. 2m): 1860
+0*12	inf	149	inf	PP	;geom.fact.(dist. 2m): 1872
+0*12	inf	150	inf	PP	;geom.fact.(dist. 2m): 1885
+0*12	inf	151	inf	PP	;geom.fact.(dist. 2m): 1898
+0*12	inf	152	inf	PP	;geom.fact.(dist. 2m): 1910
+0*12	inf	153	inf	PP	;geom.fact.(dist. 2m): 1923
+0*12	inf	154	inf	PP	;geom.fact.(dist. 2m): 1935
+0*12	inf	155	inf	PP	;geom.fact.(dist. 2m): 1948
+0*13	inf	156	inf	PP	;geom.fact.(dist. 2m): 1960
+0*13	inf	157	inf	PP	;geom.fact.(dist. 2m): 1973
+0*13	inf	158	inf	PP	;geom.fact.(dist. 2m): 1985
+0*13	inf	159	inf	PP	;geom.fact.(dist. 2m): 1998
+0*13	inf	160	inf	PP	;geom.fact.(dist. 2m): 2011
+0*13	inf	161	inf	PP	;geom.fact.(dist. 2m): 2023
+0*13	inf	162	inf	PP	;geom.fact.(dist. 2m): 2036
+0*13	inf	163	inf	PP	;geom.fact.(dist. 2m): 2048
+0*13	inf	164	inf	PP	;geom.fact.(dist. 2m): 2061
+0*13	inf	165	inf	PP	;geom.fact.(dist. 2m): 2073
+0*13	inf	166	inf	PP	;geom.fact.(dist. 2m): 2086
+0*13	inf	167	inf	PP	;geom.fact.(dist. 2m): 2099
+0*14	inf	168	inf	PP	;geom.fact.(dist. 2m): 2111
+0*14	inf	169	inf	PP	;geom.fact.(dist. 2m): 2124
+0*14	inf	170	inf	PP	;geom.fact.(dist. 2m): 2136
+0*14	inf	171	inf	PP	;geom.fact.(dist. 2m): 2149
+0*14	inf	172	inf	PP	;geom.fact.(dist. 2m): 2161
+0*14	inf	173	inf	PP	;geom.fact.(dist. 2m): 2174
+0*14	inf	174	inf	PP	;geom.fact.(dist. 2m): 2187
+0*14	inf	175	inf	PP	;geom.fact.(dist. 2m): 2199
+0*14	inf	176	inf	PP	;geom.fact.(dist. 2m): 2212
+0*14	inf	177	inf	PP	;geom.fact.(dist. 2m): 2224
+0*14	inf	178	inf	PP	;geom.fact.(dist. 2m): 2237
+0*14	inf	179	inf	PP	;geom.fact.(dist. 2m): 2249
+0*15	inf	180	inf	PP	;geom.fact.(dist. 2m): 2262
+0*15	inf	181	inf	PP	;geom.fact.(dist. 2m): 2275
+0*15	inf	182	inf	PP	;geom.fact.(dist. 2m): 2287
+0*15	inf	183	inf	PP	;geom.fact.(dist. 2m): 2300
+0*15	inf	184	inf	PP	;geom.fact.(dist. 2m): 2312
+0*15	inf	185	inf	PP	;geom.fact.(dist. 2m): 2325
+0*15	inf	186	inf	PP	;geom.fact.(dist. 2m): 2337
+0*15	inf	187	inf	PP	;geom.fact.(dist. 2m): 2350
+0*15	inf	188	inf	PP	;geom.fact.(dist. 2m): 2362
+0*15	inf	189	inf	PP	;geom.fact.(dist. 2m): 2375
+0*15	inf	190	inf	PP	;geom.fact.(dist. 2m): 2388
+0*15	inf	191	inf	PP	;geom.fact.(dist. 2m): 2400
+0*16	inf	192	inf	PP	;geom.fact.(dist. 2m): 2413
+0*16	inf	193	inf	PP	;geom.fact.(dist. 2m): 2425
+0*16	inf	194	inf	PP	;geom.fact.(dist. 2m): 2438
+0*16	inf	195	inf	PP	;geom.fact.(dist. 2m): 2450
+0*16	inf	196	inf	PP	;geom.fact.(dist. 2m): 2463
+0*16	inf	197	inf	PP	;geom.fact.(dist. 2m): 2476
+0*16	inf	198	inf	PP	;geom.fact.(dist. 2m): 2488
+0*16	inf	199	inf	PP	;geom.fact.(dist. 2m): 2501

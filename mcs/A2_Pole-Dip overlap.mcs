@@ -1,0 +1,207 @@
+Pole-Dipole with overlapped layers		;method description
+C2		;list of infinite electrodes
+0
+0
+
+10 channels
+;C1	C2	P1	P2	P3	P4	P5	P6	P7	P8	P9	P10	P11	array	receivers
+0	inf	1	2	3	4	5	6	7	8	-	-	-	PD	0123456	;geom.fact.(dist. 2m): 25,75,151,251,377,528,704,-,-,-,
+0	inf	2	4	6	8	10	12	3	5	7	9	11	PD	012346789	;geom.fact.(dist. 2m): 50,151,302,503,754,-,94,220,396,622,
+0	inf	11	16	21	12	17	22	13	18	15	20	25	PD	0134689	;geom.fact.(dist. 2m): 442,844,-,513,940,-,588,-,754,1257,
+0*1	inf	23	33	43	25	35	45	28	38	30	40	50	PD	0134689	;geom.fact.(dist. 2m): 954,1783,-,1100,1979,-,1337,-,1508,2513,
+0*3	inf	37	53	69	41	57	73	45	61	49	65	81	PD	0134689	;geom.fact.(dist. 2m): 1540,2872,-,1835,3268,-,2156,-,2501,4135,
+0*4	inf	51	73	95	56	78	100	62	84	67	89	111	PD	0134689	;geom.fact.(dist. 2m): 2127,3961,-,2495,4455,-,2975,-,3406,5643,
+0*5	inf	69	99	129	76	106	136	84	114	91	121	151	PD	0134689	;geom.fact.(dist. 2m): 2861,5350,-,3374,6039,-,4011,-,4612,7653,
+0*7	inf	90	129	168	99	138	177	109	148	119	158	197	PD	0134689	;geom.fact.(dist. 2m): 3741,6983,-,4402,7870,-,5198,-,6058,10029,
+0*9	inf	116	166	216	128	178	228	141	191	153	203	253	PD	0134689	;geom.fact.(dist. 2m): 4840,9012,-,5726,10200,-,6768,-,7806,12908,
+0*12	inf	146	209	272	161	224	287	177	240	193	256	319	PD	0134689	;geom.fact.(dist. 2m): 6087,11339,-,7194,12823,-,8473,-,9855,16289,
+0*15	inf	184	263	342	203	282	361	223	302	243	322	401	PD	0134689	;geom.fact.(dist. 2m): 7698,14308,-,9106,16193,-,10713,-,12446,20539,
+0*19	inf	228	326	424	252	350	448	277	375	301	399	497	PD	0134689	;geom.fact.(dist. 2m): 9531,17724,-,11310,20106,-,13320,-,15400,25428,
+0*23	inf	281	402	523	311	432	553	341	462	371	492	613	PD	0134689	;geom.fact.(dist. 2m): 11732,21835,-,13953,24810,-,16361,-,18957,31322,
+0*28	inf	347	496	645	384	533	682	421	570	458	607	756	PD	0134689	;geom.fact.(dist. 2m): 14516,26981,-,17262,30657,-,20239,-,23446,38702,
+0*35	inf	426	609	792	471	654	837	517	700	563	746	929	PD	0134689	;geom.fact.(dist. 2m): 17815,33121,-,21152,37589,-,24851,-,28841,47590,
+0*43	inf	524	749	974	580	805	1030	636	861	692	917	1142	PD	0134689	;geom.fact.(dist. 2m): 21920,40744,-,26077,46308,-,30584,-,35441,58487,
+0*53	inf	640	915	1190	708	983	1258	777	1052	846	1121	1396	PD	0134689	;geom.fact.(dist. 2m): 26760,49756,-,31803,56508,-,37352,-,43336,71510,
+0*65	inf	782	1118	1454	866	1202	1538	950	1286	1034	1370	1706	PD	0134689	;geom.fact.(dist. 2m): 32698,60796,-,38931,69140,-,45691,-,52980,87412,
+
+5 channels
+;C1	C2	P1	P2	P3	P4	P5	P6	P7	P8	P9	P10	P11	array	receivers
+0	inf	1	2	3	4	5	6	-	-	-	-	-	PD	01234	;geom.fact.(dist. 2m): 25,75,151,251,377,-,-,-,-,-,
+0	inf	2	4	6	8	10	-	-	-	-	-	-	PD	0123	;geom.fact.(dist. 2m): 50,151,302,503,-,-,-,-,-,-,
+0	inf	3	5	7	9	11	-	-	-	-	-	-	PD	0123	;geom.fact.(dist. 2m): 94,220,396,622,-,-,-,-,-,-,
+0	inf	11	16	21	12	17	22	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 442,844,-,513,940,-,-,-,-,-,
+0*1	inf	13	18	23	14	19	24	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 588,1040,-,669,1146,-,-,-,-,-,
+0*1	inf	23	33	43	25	35	45	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 954,1783,-,1100,1979,-,-,-,-,-,
+0*2	inf	28	38	48	30	40	50	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 1337,2292,-,1508,2513,-,-,-,-,-,
+0*3	inf	37	53	69	41	57	73	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 1540,2872,-,1835,3268,-,-,-,-,-,
+0*3	inf	45	61	77	49	65	81	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 2156,3689,-,2501,4135,-,-,-,-,-,
+0*4	inf	51	73	95	56	78	100	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 2127,3961,-,2495,4455,-,-,-,-,-,
+0*5	inf	62	84	106	67	89	111	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 2975,5086,-,3406,5643,-,-,-,-,-,
+0*5	inf	69	99	129	76	106	136	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 2861,5350,-,3374,6039,-,-,-,-,-,
+0*7	inf	84	114	144	91	121	151	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 4011,6876,-,4612,7653,-,-,-,-,-,
+0*7	inf	90	129	168	99	138	177	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 3741,6983,-,4402,7870,-,-,-,-,-,
+0*9	inf	109	148	187	119	158	197	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 5198,8918,-,6058,10029,-,-,-,-,-,
+0*9	inf	116	166	216	128	178	228	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 4840,9012,-,5726,10200,-,-,-,-,-,
+0*11	inf	141	191	241	153	203	253	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 6768,11569,-,7806,12908,-,-,-,-,-,
+0*12	inf	146	209	272	161	224	287	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 6087,11339,-,7194,12823,-,-,-,-,-,
+0*14	inf	177	240	303	193	256	319	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 8473,14505,-,9855,16289,-,-,-,-,-,
+0*15	inf	184	263	342	203	282	361	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 7698,14308,-,9106,16193,-,-,-,-,-,
+0*18	inf	223	302	381	243	322	401	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 10713,18303,-,12446,20539,-,-,-,-,-,
+0*19	inf	228	326	424	252	350	448	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 9531,17724,-,11310,20106,-,-,-,-,-,
+0*23	inf	277	375	473	301	399	497	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 13320,22744,-,15400,25428,-,-,-,-,-,
+0*23	inf	281	402	523	311	432	553	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 11732,21835,-,13953,24810,-,-,-,-,-,
+0*28	inf	341	462	583	371	492	613	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 16361,27973,-,18957,31322,-,-,-,-,-,
+0*28	inf	347	496	645	384	533	682	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 14516,26981,-,17262,30657,-,-,-,-,-,
+0*35	inf	421	570	719	458	607	756	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 20239,34564,-,23446,38702,-,-,-,-,-,
+0*35	inf	426	609	792	471	654	837	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 17815,33121,-,21152,37589,-,-,-,-,-,
+0*43	inf	517	700	883	563	746	929	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 24851,42444,-,28841,47590,-,-,-,-,-,
+0*43	inf	524	749	974	580	805	1030	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 21920,40744,-,26077,46308,-,-,-,-,-,
+0*53	inf	636	861	1086	692	917	1142	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 30584,52223,-,35441,58487,-,-,-,-,-,
+0*53	inf	640	915	1190	708	983	1258	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 26760,49756,-,31803,56508,-,-,-,-,-,
+0*64	inf	777	1052	1327	846	1121	1396	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 37352,63792,-,43336,71510,-,-,-,-,-,
+0*65	inf	782	1118	1454	866	1202	1538	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 32698,60796,-,38931,69140,-,-,-,-,-,
+0*79	inf	950	1286	1622	1034	1370	1706	-	-	-	-	-	PD	0134	;geom.fact.(dist. 2m): 45691,78012,-,52980,87412,-,-,-,-,-,
+
+1 channel
+;C1	C2	P1	P2	array
+0	inf	1	2	PD	;geom.fact.(dist. 2m): 25
+0	inf	2	3	PD	;geom.fact.(dist. 2m): 75
+0	inf	3	4	PD	;geom.fact.(dist. 2m): 151
+0	inf	4	5	PD	;geom.fact.(dist. 2m): 251
+0	inf	5	6	PD	;geom.fact.(dist. 2m): 377
+0	inf	2	4	PD	;geom.fact.(dist. 2m): 50
+0	inf	3	5	PD	;geom.fact.(dist. 2m): 94
+0	inf	4	6	PD	;geom.fact.(dist. 2m): 151
+0	inf	5	7	PD	;geom.fact.(dist. 2m): 220
+0	inf	6	8	PD	;geom.fact.(dist. 2m): 302
+0	inf	7	9	PD	;geom.fact.(dist. 2m): 396
+0	inf	8	10	PD	;geom.fact.(dist. 2m): 503
+0	inf	9	11	PD	;geom.fact.(dist. 2m): 622
+0	inf	11	16	PD	;geom.fact.(dist. 2m): 442
+0*1	inf	12	17	PD	;geom.fact.(dist. 2m): 513
+0*1	inf	13	18	PD	;geom.fact.(dist. 2m): 588
+0*1	inf	14	19	PD	;geom.fact.(dist. 2m): 669
+0*1	inf	16	21	PD	;geom.fact.(dist. 2m): 844
+0*1	inf	17	22	PD	;geom.fact.(dist. 2m): 940
+0*1	inf	18	23	PD	;geom.fact.(dist. 2m): 1040
+0*1	inf	19	24	PD	;geom.fact.(dist. 2m): 1146
+0*1	inf	23	33	PD	;geom.fact.(dist. 2m): 954
+0*2	inf	25	35	PD	;geom.fact.(dist. 2m): 1100
+0*2	inf	28	38	PD	;geom.fact.(dist. 2m): 1337
+0*2	inf	30	40	PD	;geom.fact.(dist. 2m): 1508
+0*2	inf	33	43	PD	;geom.fact.(dist. 2m): 1783
+0*2	inf	35	45	PD	;geom.fact.(dist. 2m): 1979
+0*3	inf	38	48	PD	;geom.fact.(dist. 2m): 2292
+0*3	inf	40	50	PD	;geom.fact.(dist. 2m): 2513
+0*3	inf	37	53	PD	;geom.fact.(dist. 2m): 1540
+0*3	inf	41	57	PD	;geom.fact.(dist. 2m): 1835
+0*3	inf	45	61	PD	;geom.fact.(dist. 2m): 2156
+0*4	inf	49	65	PD	;geom.fact.(dist. 2m): 2501
+0*4	inf	53	69	PD	;geom.fact.(dist. 2m): 2872
+0*4	inf	57	73	PD	;geom.fact.(dist. 2m): 3268
+0*5	inf	61	77	PD	;geom.fact.(dist. 2m): 3689
+0*5	inf	65	81	PD	;geom.fact.(dist. 2m): 4135
+0*4	inf	51	73	PD	;geom.fact.(dist. 2m): 2127
+0*4	inf	56	78	PD	;geom.fact.(dist. 2m): 2495
+0*5	inf	62	84	PD	;geom.fact.(dist. 2m): 2975
+0*5	inf	67	89	PD	;geom.fact.(dist. 2m): 3406
+0*6	inf	73	95	PD	;geom.fact.(dist. 2m): 3961
+0*6	inf	78	100	PD	;geom.fact.(dist. 2m): 4455
+0*7	inf	84	106	PD	;geom.fact.(dist. 2m): 5086
+0*7	inf	89	111	PD	;geom.fact.(dist. 2m): 5643
+0*5	inf	69	99	PD	;geom.fact.(dist. 2m): 2861
+0*6	inf	76	106	PD	;geom.fact.(dist. 2m): 3374
+0*7	inf	84	114	PD	;geom.fact.(dist. 2m): 4011
+0*7	inf	91	121	PD	;geom.fact.(dist. 2m): 4612
+0*8	inf	99	129	PD	;geom.fact.(dist. 2m): 5350
+0*8	inf	106	136	PD	;geom.fact.(dist. 2m): 6039
+0*9	inf	114	144	PD	;geom.fact.(dist. 2m): 6876
+0*10	inf	121	151	PD	;geom.fact.(dist. 2m): 7653
+0*7	inf	90	129	PD	;geom.fact.(dist. 2m): 3741
+0*8	inf	99	138	PD	;geom.fact.(dist. 2m): 4402
+0*9	inf	109	148	PD	;geom.fact.(dist. 2m): 5198
+0*9	inf	119	158	PD	;geom.fact.(dist. 2m): 6058
+0*10	inf	129	168	PD	;geom.fact.(dist. 2m): 6983
+0*11	inf	138	177	PD	;geom.fact.(dist. 2m): 7870
+0*12	inf	148	187	PD	;geom.fact.(dist. 2m): 8918
+0*13	inf	158	197	PD	;geom.fact.(dist. 2m): 10029
+0*9	inf	116	166	PD	;geom.fact.(dist. 2m): 4840
+0*10	inf	128	178	PD	;geom.fact.(dist. 2m): 5726
+0*11	inf	141	191	PD	;geom.fact.(dist. 2m): 6768
+0*12	inf	153	203	PD	;geom.fact.(dist. 2m): 7806
+0*13	inf	166	216	PD	;geom.fact.(dist. 2m): 9012
+0*14	inf	178	228	PD	;geom.fact.(dist. 2m): 10200
+0*15	inf	191	241	PD	;geom.fact.(dist. 2m): 11569
+0*16	inf	203	253	PD	;geom.fact.(dist. 2m): 12908
+0*12	inf	146	209	PD	;geom.fact.(dist. 2m): 6087
+0*13	inf	161	224	PD	;geom.fact.(dist. 2m): 7194
+0*14	inf	177	240	PD	;geom.fact.(dist. 2m): 8473
+0*16	inf	193	256	PD	;geom.fact.(dist. 2m): 9855
+0*17	inf	209	272	PD	;geom.fact.(dist. 2m): 11339
+0*18	inf	224	287	PD	;geom.fact.(dist. 2m): 12823
+0*20	inf	240	303	PD	;geom.fact.(dist. 2m): 14505
+0*21	inf	256	319	PD	;geom.fact.(dist. 2m): 16289
+0*15	inf	184	263	PD	;geom.fact.(dist. 2m): 7698
+0*16	inf	203	282	PD	;geom.fact.(dist. 2m): 9106
+0*18	inf	223	302	PD	;geom.fact.(dist. 2m): 10713
+0*20	inf	243	322	PD	;geom.fact.(dist. 2m): 12446
+0*21	inf	263	342	PD	;geom.fact.(dist. 2m): 14308
+0*23	inf	282	361	PD	;geom.fact.(dist. 2m): 16193
+0*25	inf	302	381	PD	;geom.fact.(dist. 2m): 18303
+0*26	inf	322	401	PD	;geom.fact.(dist. 2m): 20539
+0*19	inf	228	326	PD	;geom.fact.(dist. 2m): 9531
+0*21	inf	252	350	PD	;geom.fact.(dist. 2m): 11310
+0*23	inf	277	375	PD	;geom.fact.(dist. 2m): 13320
+0*25	inf	301	399	PD	;geom.fact.(dist. 2m): 15400
+0*27	inf	326	424	PD	;geom.fact.(dist. 2m): 17724
+0*29	inf	350	448	PD	;geom.fact.(dist. 2m): 20106
+0*31	inf	375	473	PD	;geom.fact.(dist. 2m): 22744
+0*33	inf	399	497	PD	;geom.fact.(dist. 2m): 25428
+0*23	inf	281	402	PD	;geom.fact.(dist. 2m): 11732
+0*25	inf	311	432	PD	;geom.fact.(dist. 2m): 13953
+0*28	inf	341	462	PD	;geom.fact.(dist. 2m): 16361
+0*30	inf	371	492	PD	;geom.fact.(dist. 2m): 18957
+0*33	inf	402	523	PD	;geom.fact.(dist. 2m): 21835
+0*36	inf	432	553	PD	;geom.fact.(dist. 2m): 24810
+0*38	inf	462	583	PD	;geom.fact.(dist. 2m): 27973
+0*41	inf	492	613	PD	;geom.fact.(dist. 2m): 31322
+0*28	inf	347	496	PD	;geom.fact.(dist. 2m): 14516
+0*32	inf	384	533	PD	;geom.fact.(dist. 2m): 17262
+0*35	inf	421	570	PD	;geom.fact.(dist. 2m): 20239
+0*38	inf	458	607	PD	;geom.fact.(dist. 2m): 23446
+0*41	inf	496	645	PD	;geom.fact.(dist. 2m): 26981
+0*44	inf	533	682	PD	;geom.fact.(dist. 2m): 30657
+0*47	inf	570	719	PD	;geom.fact.(dist. 2m): 34564
+0*50	inf	607	756	PD	;geom.fact.(dist. 2m): 38702
+0*35	inf	426	609	PD	;geom.fact.(dist. 2m): 17815
+0*39	inf	471	654	PD	;geom.fact.(dist. 2m): 21152
+0*43	inf	517	700	PD	;geom.fact.(dist. 2m): 24851
+0*46	inf	563	746	PD	;geom.fact.(dist. 2m): 28841
+0*50	inf	609	792	PD	;geom.fact.(dist. 2m): 33121
+0*54	inf	654	837	PD	;geom.fact.(dist. 2m): 37589
+0*58	inf	700	883	PD	;geom.fact.(dist. 2m): 42444
+0*62	inf	746	929	PD	;geom.fact.(dist. 2m): 47590
+0*43	inf	524	749	PD	;geom.fact.(dist. 2m): 21920
+0*48	inf	580	805	PD	;geom.fact.(dist. 2m): 26077
+0*53	inf	636	861	PD	;geom.fact.(dist. 2m): 30584
+0*57	inf	692	917	PD	;geom.fact.(dist. 2m): 35441
+0*62	inf	749	974	PD	;geom.fact.(dist. 2m): 40744
+0*67	inf	805	1030	PD	;geom.fact.(dist. 2m): 46308
+0*71	inf	861	1086	PD	;geom.fact.(dist. 2m): 52223
+0*76	inf	917	1142	PD	;geom.fact.(dist. 2m): 58487
+0*53	inf	640	915	PD	;geom.fact.(dist. 2m): 26760
+0*59	inf	708	983	PD	;geom.fact.(dist. 2m): 31803
+0*64	inf	777	1052	PD	;geom.fact.(dist. 2m): 37352
+0*70	inf	846	1121	PD	;geom.fact.(dist. 2m): 43336
+0*76	inf	915	1190	PD	;geom.fact.(dist. 2m): 49756
+0*81	inf	983	1258	PD	;geom.fact.(dist. 2m): 56508
+0*87	inf	1052	1327	PD	;geom.fact.(dist. 2m): 63792
+0*93	inf	1121	1396	PD	;geom.fact.(dist. 2m): 71510
+0*65	inf	782	1118	PD	;geom.fact.(dist. 2m): 32698
+0*72	inf	866	1202	PD	;geom.fact.(dist. 2m): 38931
+0*79	inf	950	1286	PD	;geom.fact.(dist. 2m): 45691
+0*86	inf	1034	1370	PD	;geom.fact.(dist. 2m): 52980
+0*93	inf	1118	1454	PD	;geom.fact.(dist. 2m): 60796
+0*100	inf	1202	1538	PD	;geom.fact.(dist. 2m): 69140
+0*107	inf	1286	1622	PD	;geom.fact.(dist. 2m): 78012
+0*114	inf	1370	1706	PD	;geom.fact.(dist. 2m): 87412
