@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def get_data_grd(data):
+def wget_data_grd(data):
     x = data[6]
     y = data[7]
     z = data[2][:, 0]
