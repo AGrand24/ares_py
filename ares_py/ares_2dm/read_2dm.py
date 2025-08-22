@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
 
+from ares_py.geometry.doi import get_doi_2dm
+from ares_py.geometry.geometry_2dm import get_n_a_2dm, get_x_meas
+
 
 def read_ascii(fp):
     with open(fp) as file:
@@ -90,3 +93,47 @@ def format_header(header):
     header.index = h[0]
     header = header.str.strip()
     return header
+
+
+def read_2dm(fp):
+    data, header = read_ascii(fp)
+    version = version_2dm(header)
+    data = split_2dm_data(data, version)
+    header = format_header(header)
+
+    spacing = get_el_spacing(header)
+    data[0] = data[0] * spacing
+    data = get_n_a_2dm(data)
+    data = get_x_meas(data)
+    data = get_doi_2dm(data)
+    data[2][:, 0] = np.round(data[2][:, 0])
+
+    return data, version, header, spacing
+
+
+def get_el_spacing(header):
+    spacing = header["electrode_distance"]
+    spacing = spacing.replace("m", "").strip()
+    spacing = int(spacing)
+    return spacing
+
+
+def load_2dm(ert):
+    read = read_2dm(ert.fp_load)
+    data = read[0]
+    ert.version = read[1]
+    ert.header = read[2]
+    ert.el_space = read[3]
+
+    ert.el = data[0]
+    ert.arr = data[1]
+    ert.meas = data[2]
+    ert.chan = data[3]
+    ert.a = data[4]
+    ert.n = data[5]
+    ert.xpf = data[6]
+    ert.doi = data[7]
+
+    ert.arrays = np.unique(ert.arr)
+
+    return ert
