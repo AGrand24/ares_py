@@ -75,10 +75,12 @@ def plt_meas(ert, topo=False, clr="res"):
     cd = df.copy().fillna(-1)
     cd["i"] = (1000 / cd["i"]).round()
 
-    round = [("res", 0), ("v", 0), ("ep", 0), ("i", 0), ("a", 0), ("n", 2), ("std", 1)]
+    round = [("res", 0), ("v", 0), ("ep", 0), ("i", 0), ("a", 0), ("n", 2)]
     for col, d in round:
         cd[col] = np.round(cd[col], d)
         cd[col] = cd[col].astype(str).str.rstrip(".0")
+
+    cd["std"] = np.round(cd["std"], 1)
 
     cd = cd.astype(str)
     cd = cd.values
