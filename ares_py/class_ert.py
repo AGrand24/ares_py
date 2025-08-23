@@ -17,6 +17,7 @@ class ERT:
         if self.fp_load.endswith(".2dm"):
             self = load_2dm(self)
             self.sec = get_sections(self)
+            self.check["data"] = True
         return self
 
     def Colorscales(self):

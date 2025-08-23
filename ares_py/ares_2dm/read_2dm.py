@@ -161,5 +161,4 @@ def load_2dm(ert):
     ert.data["z"] = ert.data["doi"]
     ert.data["ld_hor"] = ert.data["ld"]
     ert.arrays = np.unique(ert.data["arr"])
-    ert.check["data"] = True
     return ert
