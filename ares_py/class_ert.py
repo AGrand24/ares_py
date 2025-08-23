@@ -6,7 +6,7 @@ import numpy as np
 class ERT:
     def __init__(self, fp):
         self.fp_load = fp
-        pass
+        self.cs_res = None
 
     def Load(self, cs_res="cs_def"):
         self.cs_res = dict(name=cs_res)
