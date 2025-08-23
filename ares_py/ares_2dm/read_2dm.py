@@ -125,16 +125,14 @@ def load_2dm(ert):
     ert.header = read[2]
     ert.el_space = read[3]
 
-    ert.el = data[0]
-    ert.arr = data[1]
-    ert.meas = data[2]
-    ert.chan = data[3]
-    ert.a = data[4]
-    ert.n = data[5]
-    ert.xm = data[6]
-    ert.doi = data[7]
-
-    ert.arrays = np.unique(ert.arr)
+    # ert.el = data[0]
+    # ert.arr = data[1]
+    # ert.meas = data[2]
+    # ert.chan = data[3]
+    # ert.a = data[4]
+    # ert.n = data[5]
+    # ert.ld = data[6]
+    # ert.doi = data[7]
 
     columns = [
         "c1",
@@ -152,7 +150,7 @@ def load_2dm(ert):
         "ch2",
         "a",
         "n",
-        "xm",
+        "ld",
         "doi",
     ]
     ert.data = pd.concat([pd.DataFrame(d) for d in data], axis=1)
@@ -160,4 +158,7 @@ def load_2dm(ert):
     ert.data.iloc[:, :4] = ert.data.iloc[:, :4].astype("Int64")
     ert.data["ID_meas"] = list(range(ert.data.shape[0]))
 
+    ert.data["z"] = ert.data["doi"]
+    ert.data["ld_hor"] = ert.data["ld"]
+    ert.arrays = np.unique(ert.data["arr"])
     return ert

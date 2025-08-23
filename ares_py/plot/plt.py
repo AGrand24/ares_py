@@ -6,11 +6,13 @@ import pandas as pd
 pio.templates.default = "plotly_dark"
 
 
-def plt_meas(ert, topo=False, clr="res"):
+def plt_meas(ert, clr="res"):
     df = ert.data.copy()
 
     if not clr in ["res"]:
         df = df.loc[df["res"] > 0]
+    x = df["ld_hor"]
+    y = df["z"]
 
     clr_def = {
         "res": {
@@ -68,14 +70,10 @@ def plt_meas(ert, topo=False, clr="res"):
     }
     clr_def = clr_def[clr]
 
-    if topo == False:
-        x = df["xm"]
-        y = df["doi"]
-
     cd = df.copy().fillna(-1)
     cd["i"] = (1000 / cd["i"]).round()
 
-    round = [("res", 0), ("v", 0), ("ep", 0), ("i", 0), ("a", 0), ("n", 2)]
+    round = [("res", 0), ("v", 0), ("ep", 0), ("i", 0), ("a", 0), ("n", 2), ("z", 0)]
     for col, d in round:
         cd[col] = np.round(cd[col], d)
         cd[col] = cd[col].astype(str).str.rstrip(".0")
@@ -85,9 +83,8 @@ def plt_meas(ert, topo=False, clr="res"):
     cd = cd.astype(str)
     cd = cd.values
 
-    ht = "%{x}, %{y}, "
-    ht += clr_def["cd"]
-    ht = [ht]
+    ht = [clr_def["cd"]]
+    ht.append("%{x}, %{y}, %{cd[16]} ")
     ht.append("%{cd[0]} %{cd[1]} %{cd[2]} %{cd[3]}")
     ht.append("R: %{cd[5]}, V: %{cd[6]}, I: %{cd[7]}")
     ht.append("SP: %{cd[8]}, Vout: %{cd[10]}")
@@ -128,9 +125,7 @@ def plt_electrodes(ert, topo=False):
     n_sec = ert.sec[:, 2] + 1
 
     x = ert.sec[:, 0] * ert.el_space
-
-    if topo == False:
-        y = np.tile(4, xn.shape[0])
+    y = np.tile(4, xn.shape[0])
 
     cd = np.column_stack([x, y - 4, xn, sec, n_sec])
     ht = "x: %{cd[0]}, z: %{cd[1]}<br>n: %{cd[2]}, sec: %{cd[3]}<br>n sec: %{cd[4]}"

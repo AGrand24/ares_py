@@ -2,7 +2,7 @@ import numpy as np
 
 
 def get_sections(ert, section_electrodes=8):
-    electrodes = ert.el
+    electrodes = ert.data.iloc[:, :4]
 
     x = np.unique(electrodes)
     x = np.sort(x)
