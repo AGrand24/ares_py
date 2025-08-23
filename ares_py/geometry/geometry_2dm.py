@@ -41,6 +41,9 @@ def get_n_a_2dm(data):
     n = n.reshape(-1)
     n /= a
 
+    a = np.round(a, 2)
+    n = np.round(n, 2)
+
     data.append(a)
     data.append(n)
     return data
@@ -68,6 +71,6 @@ def get_x_meas(data):
 
         x3 = (x1 + x2) / 2
         x[idx] = x3.reshape(-1)
-
+    x = np.round(x, 2)
     data.append(x)
     return data

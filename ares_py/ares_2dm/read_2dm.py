@@ -131,9 +131,32 @@ def load_2dm(ert):
     ert.chan = data[3]
     ert.a = data[4]
     ert.n = data[5]
-    ert.xpf = data[6]
+    ert.xm = data[6]
     ert.doi = data[7]
 
     ert.arrays = np.unique(ert.arr)
+
+    columns = [
+        "c1",
+        "c2",
+        "p1",
+        "p2",
+        "arr",
+        "res",
+        "v",
+        "i",
+        "ep",
+        "std",
+        "v_out",
+        "ch1",
+        "ch2",
+        "a",
+        "n",
+        "xm",
+        "doi",
+    ]
+    ert.data = pd.concat([pd.DataFrame(d) for d in data], axis=1)
+    ert.data.columns = columns
+    ert.data.iloc[:, :4] = ert.data.iloc[:, :4].astype("Int64")
 
     return ert
