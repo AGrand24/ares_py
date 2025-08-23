@@ -9,6 +9,7 @@ class ERT:
         self.fp_load = fp
         self.cs_res = None
         self.sec = None
+        self.check = dict(data=False, coords=False, topo=False, mcs=False, inv=False)
 
     def Load(self, cs_res="cs_def"):
         self.cs_res = dict(name=cs_res)
