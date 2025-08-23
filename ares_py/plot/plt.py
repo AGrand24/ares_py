@@ -1,15 +1,20 @@
 import plotly.graph_objects as go
 import plotly.io as pio
 import numpy as np
+import pandas as pd
 
 pio.templates.default = "plotly_dark"
 
 
 def plt_meas(ert, topo=False, clr="res"):
+    df = ert.data.copy()
+
+    if not clr in ["res"]:
+        df = df.loc[df["res"] > 0]
 
     clr_def = {
         "res": {
-            "data": ert.data["res"],
+            "data": df["res"],
             "cd": "%{cd[5]}",
             "cs": ert.cs_res["color_scale"],
             "cmin": ert.cs_res["crange"][0],
@@ -22,7 +27,7 @@ def plt_meas(ert, topo=False, clr="res"):
             "visible": True,
         },
         "res_log": {
-            "data": np.log10(ert.data["res"].clip(lower=1)),
+            "data": np.log10(df["res"].clip(lower=1)),
             "cd": "%{cd[5]}",
             "cs": "Turbo",
             "cmin": None,
@@ -34,8 +39,8 @@ def plt_meas(ert, topo=False, clr="res"):
             ),
             "visible": "legendonly",
         },
-        "sp": {
-            "data": ert.data["ep"],
+        "ep": {
+            "data": df["ep"],
             "cd": "%{cd[8]}",
             "cs": "RdBu_r",
             "cmin": -500,
@@ -47,24 +52,46 @@ def plt_meas(ert, topo=False, clr="res"):
             ),
             "visible": "legendonly",
         },
+        "std": {
+            "data": df["std"],
+            "cd": "%{cd[9]}",
+            "cs": "Temps",
+            "cmin": 0,
+            "cmax": 1,
+            "showscale": False,
+            "colorbar": dict(
+                tickvals=ert.cs_res["tickvals"],
+                ticktext=ert.cs_res["ticktxt"],
+            ),
+            "visible": "legendonly",
+        },
     }
     clr_def = clr_def[clr]
 
     if topo == False:
-        x = ert.xm
-        y = ert.doi
+        x = df["xm"]
+        y = df["doi"]
 
-    cd = ert.data.copy().fillna(-1)
+    cd = df.copy().fillna(-1)
     cd["i"] = (1000 / cd["i"]).round()
-    cd[["v", "ep"]] = cd[["v", "ep"]].round()
+
+    round = [("res", 0), ("v", 0), ("ep", 0), ("i", 0), ("a", 0), ("n", 2), ("std", 1)]
+    for col, d in round:
+        cd[col] = np.round(cd[col], d)
+        cd[col] = cd[col].astype(str).str.rstrip(".0")
+
+    cd = cd.astype(str)
     cd = cd.values
 
     ht = "%{x}, %{y}, "
     ht += clr_def["cd"]
     ht = [ht]
+    ht.append("%{cd[0]} %{cd[1]} %{cd[2]} %{cd[3]}")
     ht.append("R: %{cd[5]}, V: %{cd[6]}, I: %{cd[7]}")
     ht.append("SP: %{cd[8]}, Vout: %{cd[10]}")
     ht.append("a: %{cd[13]}, n: %{cd[14]}")
+    ht.append("std: %{cd[9]}, ch: %{cd[11]} %{cd[12]}")
+    ht.append("ID: %{cd[17]}")
     ht = ("<br>").join(ht)
     ht = ht.replace("cd[", "customdata[")
 
@@ -89,4 +116,37 @@ def plt_meas(ert, topo=False, clr="res"):
         visible=clr_def["visible"],
         showlegend=True,
     )
+    return plt
+
+
+def plt_electrodes(ert, topo=False):
+
+    xn = ert.sec[:, 0] + 1
+    sec = ert.sec[:, 1] + 1
+    n_sec = ert.sec[:, 2] + 1
+
+    x = ert.sec[:, 0] * ert.el_space
+
+    if topo == False:
+        y = np.tile(4, xn.shape[0])
+
+    cd = np.column_stack([x, y - 4, xn, sec, n_sec])
+    ht = "x: %{cd[0]}, z: %{cd[1]}<br>n: %{cd[2]}, sec: %{cd[3]}<br>n sec: %{cd[4]}"
+    ht = ht.replace("cd", "customdata")
+
+    plt = go.Scatter(
+        x=x,
+        y=y,
+        mode="markers",
+        marker=dict(
+            size=7,
+            color=sec,
+            colorscale="Rainbow",
+            line=dict(width=1, color="#6B6B6B"),
+        ),
+        name="electrodes",
+        customdata=cd,
+        hovertemplate=ht,
+    )
+
     return plt

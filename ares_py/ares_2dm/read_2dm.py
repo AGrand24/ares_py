@@ -158,5 +158,6 @@ def load_2dm(ert):
     ert.data = pd.concat([pd.DataFrame(d) for d in data], axis=1)
     ert.data.columns = columns
     ert.data.iloc[:, :4] = ert.data.iloc[:, :4].astype("Int64")
+    ert.data["ID_meas"] = list(range(ert.data.shape[0]))
 
     return ert

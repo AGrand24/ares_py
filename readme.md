@@ -1,5 +1,5 @@
 Todo:
-+ surface electrode positions
++ surface electrode positions + colored statiscis based on C or P values
 + res2dinv conversion
 + topography add + filters 
 + read from DTM
