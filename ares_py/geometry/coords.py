@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import os
 
 
 def coords_load(fp):
@@ -67,17 +68,20 @@ def coords_merge_sections(ert):
     df = df.reset_index()
     df.columns = ["ld", "n_el", "sec", "n_sec", "x", "y", "topo", "ld_hor"]
     df = df.dropna(subset="x")
+    df["dtm"] = 0
+    df["dtm_dist"] = 0
     return df
 
 
 def coords_get_z(ert, zmode="dtm"):
     df = ert.data.copy()
 
-    zmode = "dtm"
     if zmode == "dtm":
         z = "dtm"
     else:
         z = "topo"
+        df["z0_dtm"] = df["z0_topo"].max()
+        df["dtm_dist"] = 0
 
     df["z0"] = df[f"z0_{z}"]
     df["z"] = df["z0"] + df["doi"]
@@ -87,3 +91,20 @@ def coords_get_z(ert, zmode="dtm"):
     df[cols] = df[cols].round(2)
 
     return df
+
+
+def coords_create_csv(ert):
+
+    if not os.path.exists(ert.fp["in_topo"]):
+        electrodes = ert.data.iloc[:, :4].values
+        electrodes = np.unique(electrodes)
+
+        data = [electrodes, electrodes]
+        data.append(np.full(shape=(data[0].shape[0], 2), fill_value=0.0))
+
+        data = np.column_stack(data)
+
+        df = pd.DataFrame(data)
+        df.to_csv(ert.fp["in_topo"], index=False, header=None)
+
+        print(f"\tTopo .csv not found created new csv: {ert.fp['in_topo']} ")

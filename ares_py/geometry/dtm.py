@@ -116,3 +116,13 @@ def dtm_merge_data(ert):
     df = pd.merge(df_l, df_r, "left", left_on="ld", right_index=True)
 
     return df
+
+
+def dtm_check(ert):
+    check = False
+    if np.sum(ert.sec["y"], axis=0) == 0:
+        print("\t Placeholder coordinates only! Skipping DTM load..")
+    else:
+        check = True
+
+    return check

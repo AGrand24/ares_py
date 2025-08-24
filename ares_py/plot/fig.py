@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 import numpy as np
 from pathlib import Path
-from ares_py.plot.plt import plt_meas, plt_electrodes, plt_dtm, plt_z_check
+from ares_py.plot.plt import plt_meas, plt_electrodes, plt_dtm, plt_topo
 from plotly.subplots import make_subplots
 
 
@@ -18,7 +18,7 @@ def fig_meas_data(ert):
     # fig.add_trace(plt_electrodes(ert))
     fig.add_traces(plt)
 
-    plt = plt_z_check(ert, visible="legendonly")[:2]
+    plt = plt_topo(ert, visible="legendonly")[:2]
     fig.add_traces(plt)
 
     fig.update_yaxes(scaleanchor="x1", scaleratio=1)
@@ -54,7 +54,7 @@ def fig_dtm(dtm):
 
 
 def fig_z_check(ert):
-    plt = plt_z_check(ert)
+    plt = plt_topo(ert)
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig = fig.add_traces(plt[:2])
     fig = fig.add_trace(plt[2], secondary_y=True)

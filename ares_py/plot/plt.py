@@ -164,7 +164,7 @@ def plt_dtm(dtm):
     return plt
 
 
-def plt_z_check(ert, visible=True):
+def plt_topo(ert, visible=True):
     y1 = ert.sec["topo"]
     y2 = ert.sec["dtm"]
     y3 = ert.sec["dtm_dist"]
@@ -177,11 +177,12 @@ def plt_z_check(ert, visible=True):
             x=x, y=y1, mode="markers", marker=marker, name="topo", visible=visible
         )
     ]
-    plt.append(
-        go.Scatter(
-            x=x, y=y2, mode="markers", marker=marker, name="dtm", visible=visible
+    if ert.check["dtm"] == True:
+        plt.append(
+            go.Scatter(
+                x=x, y=y2, mode="markers", marker=marker, name="dtm", visible=visible
+            )
         )
-    )
-    plt.append(go.Scatter(x=x, y=y3, name="sample<br>dist.", visible="legendonly"))
-    plt.append(go.Scatter(x=x, y=y2 - y1, name="z diff", visible="legendonly"))
+        plt.append(go.Scatter(x=x, y=y3, name="sample<br>dist.", visible="legendonly"))
+        plt.append(go.Scatter(x=x, y=y2 - y1, name="z diff", visible="legendonly"))
     return plt

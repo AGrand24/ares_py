@@ -118,6 +118,14 @@ def get_el_spacing(header):
     return spacing
 
 
+def delete_empty_entires(ert):
+    mask1 = ert.data["res"] != 0
+    mask2 = ert.data["i"] != 0
+    mask3 = ert.data["v"] != 0
+    mask4 = ert.data["ep"] != 0
+    return ert.data.loc[mask1 & mask2 & mask3 & mask4]
+
+
 def load_2dm(ert):
     read = read_2dm(ert.fp_load)
     data = read[0]
@@ -155,10 +163,14 @@ def load_2dm(ert):
     ]
     ert.data = pd.concat([pd.DataFrame(d) for d in data], axis=1)
     ert.data.columns = columns
+
+    ert.data = delete_empty_entires(ert)
+
     ert.data.iloc[:, :4] = ert.data.iloc[:, :4].astype("Int64")
     ert.data["ID_meas"] = list(range(ert.data.shape[0]))
 
     ert.data["z"] = ert.data["doi"]
     ert.data["ld_hor"] = ert.data["ld"]
+
     ert.arrays = np.unique(ert.data["arr"])
     return ert
