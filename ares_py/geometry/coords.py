@@ -22,10 +22,10 @@ def coords_ld2d(coords):
 
 
 def coords_interpolate(coords):
+    l1 = coords[:, 0]
+    step = 0.1
+    l2 = np.arange(0, coords[:, 0].max() + step, step)
 
-    l1 = np.arange(len(coords[:, 0]))
-    l2 = np.arange(0, len(coords[:, 0]) - 1 + 0.1, 0.1)
-    # index = np.arange(0, np.max(coords[:, 0]), step=0.5)
     interpolated = []
     for i in range(0, coords.shape[1]):
         interpolated.append(np.interp(l2, l1, coords[:, i]))
@@ -43,13 +43,14 @@ def coord_merge(ert):
     df_r = pd.DataFrame(coords_int[:, 1:], index=coords_int[:, 0])
 
     df = pd.merge(df_l, df_r, "left", left_on="ld", right_index=True)
-    df.columns = ["ld", "z", "x", "y", "z0_topo", "ld_hor"]
+    df.columns = ["ld", "topo", "x", "y", "z0_topo", "ld_hor"]
 
-    df["z"] = df["z"] + df["z0_topo"]
+    df["topo"] = df["topo"] + df["z0_topo"]
 
-    df.iloc[:, 1:] = np.round(df.iloc[:, 1:], 2)
-
-    data[df.columns] = df[df.columns]
+    cols = df.columns[1:]
+    data = data.reset_index(drop=True)
+    df = df.reset_index(drop=True)
+    data[cols] = df[cols]
 
     return data
 
@@ -64,6 +65,25 @@ def coords_merge_sections(ert):
     df = pd.merge(df_l, df_r, "left", left_index=True, right_index=True)
 
     df = df.reset_index()
-    df.columns = ["ld", "n_el", "sec", "n_sec", "x", "y", "z", "ld_hor"]
+    df.columns = ["ld", "n_el", "sec", "n_sec", "x", "y", "topo", "ld_hor"]
+    df = df.dropna(subset="x")
+    return df
+
+
+def coords_get_z(ert, zmode="dtm"):
+    df = ert.data.copy()
+
+    zmode = "dtm"
+    if zmode == "dtm":
+        z = "dtm"
+    else:
+        z = "topo"
+
+    df["z0"] = df[f"z0_{z}"]
+    df["z"] = df["z0"] + df["doi"]
+    df["dtm"] = df["z0_dtm"] + df["doi"]
+
+    cols = ["z", "z0", "topo", "dtm", "z0_dtm", "z0_topo", "dtm_dist"]
+    df[cols] = df[cols].round(2)
 
     return df

@@ -147,3 +147,41 @@ def plt_electrodes(ert, topo=False):
     )
 
     return plt
+
+
+def plt_dtm(dtm):
+
+    x = dtm[0]
+    y = dtm[1]
+    z = dtm[2]
+    plt = go.Heatmap(
+        z=z,
+        x0=np.min(x),
+        y0=np.min(y),
+        dx=np.ptp(x) / z.shape[1],
+        dy=np.ptp(y) / z.shape[0],
+    )
+    return plt
+
+
+def plt_z_check(ert, visible=True):
+    y1 = ert.sec["topo"]
+    y2 = ert.sec["dtm"]
+    y3 = ert.sec["dtm_dist"]
+    x = ert.sec["ld_hor"]
+
+    marker = dict(size=4)
+
+    plt = [
+        go.Scatter(
+            x=x, y=y1, mode="markers", marker=marker, name="topo", visible=visible
+        )
+    ]
+    plt.append(
+        go.Scatter(
+            x=x, y=y2, mode="markers", marker=marker, name="dtm", visible=visible
+        )
+    )
+    plt.append(go.Scatter(x=x, y=y3, name="sample<br>dist.", visible="legendonly"))
+    plt.append(go.Scatter(x=x, y=y2 - y1, name="z diff", visible="legendonly"))
+    return plt
