@@ -33,15 +33,15 @@ def dtm_get_buffer(ert):
     return buffer
 
 
-def dtm_clip_line_lim(ert, dtm):
+def dtm_clip_line_lim(xlim, ylim, dtm):
     df = pd.DataFrame(np.column_stack([d.flatten() for d in dtm]))
 
-    mask2 = df[0] <= ert.sec["x"].max()
-    mask1 = df[0] >= ert.sec["x"].min()
+    mask2 = df[0] <= xlim[1]
+    mask1 = df[0] >= xlim[0]
     df = df.loc[mask1 & mask2]
 
-    mask2 = df[1] <= ert.sec["y"].max()
-    mask1 = df[1] >= ert.sec["y"].min()
+    mask2 = df[1] <= ylim[1]
+    mask1 = df[1] >= ylim[0]
     df = df.loc[mask1 & mask2]
     df = df.dropna()
     return df
@@ -57,7 +57,10 @@ def dtm_clip_buffer(df, buffer):
 
 
 def dtm_clip(ert, dtm):
-    df = dtm_clip_line_lim(ert, dtm)
+    xlim = [ert.sec["x"].min(), ert.sec["x"].max()]
+    ylim = [ert.sec["y"].min(), ert.sec["y"].max()]
+
+    df = dtm_clip_line_lim(xlim, ylim, dtm)
     buffer = dtm_get_buffer(ert)
     df = dtm_clip_buffer(df, buffer)
     return df
@@ -126,3 +129,12 @@ def dtm_check(ert):
         check = True
 
     return check
+
+
+def dtm_clip_3d(dtm, data):
+
+    xlim = [data["x"].min(), data["x"].max()]
+    ylim = [data["y"].min(), data["y"].max()]
+
+    df_dtm = dtm_clip_line_lim(xlim, ylim, dtm)
+    return df_dtm

@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 
 from ares_py.get_ld import get_ld
 from ares_py.class_ert import ERT
-from ares_py.plot.fig import fig_meas_data
+from ares_py.plot.fig import fig_meas_data, fig_meas_data_3d
 from ares_py.geometry.coords import (
     coords_load,
     coords_ld2d,
@@ -16,9 +16,11 @@ from ares_py.geometry.coords import (
 )
 from ares_py.geometry.dtm import tif_read, dtm_sample, dtm_merge_data, dtm_check
 
-fps = get_ld("input", ext=".2dm")["fp"]
+fps = get_ld("input/klinovec/", ext=".2dm")["fp"]
 dtm = tif_read("input/klinovec/dtm.tif")
 
+data = pd.DataFrame()
+sec = pd.DataFrame()
 for fp in fps:
     print(fp)
     ert = ERT(fp).Load().Colorscales()
@@ -42,3 +44,7 @@ for fp in fps:
 
     ert.data = coords_get_z(ert, zmode)
     fig = fig_meas_data(ert)
+    data = pd.concat([data, ert.data])
+    sec = pd.concat([sec, ert.sec])
+
+fig = fig_meas_data_3d(data, ert.cs_res, dtm, "tmp/test3d.html")

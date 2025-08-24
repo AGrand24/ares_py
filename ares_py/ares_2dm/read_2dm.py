@@ -133,15 +133,6 @@ def load_2dm(ert):
     ert.header = read[2]
     ert.el_space = read[3]
 
-    # ert.el = data[0]
-    # ert.arr = data[1]
-    # ert.meas = data[2]
-    # ert.chan = data[3]
-    # ert.a = data[4]
-    # ert.n = data[5]
-    # ert.ld = data[6]
-    # ert.doi = data[7]
-
     columns = [
         "c1",
         "c2",

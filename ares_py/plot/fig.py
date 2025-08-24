@@ -1,8 +1,17 @@
 import plotly.graph_objects as go
 import numpy as np
 from pathlib import Path
-from ares_py.plot.plt import plt_meas, plt_electrodes, plt_dtm, plt_topo
+from ares_py.plot.plt import (
+    plt_meas,
+    plt_electrodes,
+    plt_dtm,
+    plt_topo,
+    plt_meas_3d,
+    plt_dtm_3d,
+    plt_sec_3d,
+)
 from plotly.subplots import make_subplots
+from ares_py.geometry.dtm import dtm_clip_3d
 
 
 def fig_meas_data(ert):
@@ -30,6 +39,46 @@ def fig_meas_data(ert):
     fig.update_layout(width=1600, height=900)
     fp_out = Path(ert.fp_load).name.replace(".2dm", ".html")
     fp_out = "output/" + fp_out
+    fig.write_html(fp_out)
+    return fig
+
+
+def fig_meas_data_3d(data, sec, cs_res, dtm, fp_out):
+    plt = [
+        plt_meas_3d(data, cs_res),
+        plt_meas_3d(data, cs_res, clr="res_log"),
+        plt_meas_3d(data, cs_res, clr="ep"),
+        plt_meas_3d(data, cs_res, clr="std"),
+    ]
+    fig = go.Figure()
+
+    # fig.add_trace(plt_electrodes(ert))
+    fig.add_traces(plt)
+
+    df_dtm = dtm_clip_3d(dtm, data)
+
+    plt = plt_dtm_3d(df_dtm)
+    fig = fig.add_trace(plt)
+
+    plt = plt_sec_3d(sec)
+    fig = fig.add_trace(plt)
+
+    fig.update_layout(xaxis=dict(showgrid=False), yaxis=dict(showgrid=False))
+
+    camera = dict(eye=dict(x=1, y=1, z=1))
+
+    fig.update_layout(
+        scene=dict(
+            aspectmode="data",
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            zaxis=dict(visible=False),
+        ),
+        scene_camera=camera,
+        margin=dict(l=0, r=0, b=0, t=40),
+    )
+
+    fig.update_layout(width=1600, height=900)
     fig.write_html(fp_out)
     return fig
 
