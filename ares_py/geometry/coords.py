@@ -35,18 +35,35 @@ def coords_interpolate(coords):
     return coords_int
 
 
-def coord_merge(data, coords_int):
+def coord_merge(ert):
+    data = ert.data.copy()
+    coords_int = ert.coords_int.copy()
 
     df_l = data.copy()[["ld", "doi"]]
     df_r = pd.DataFrame(coords_int[:, 1:], index=coords_int[:, 0])
 
     df = pd.merge(df_l, df_r, "left", left_on="ld", right_index=True)
-    df.columns = ["ld", "z", "x", "y", "z0", "ld_hor"]
+    df.columns = ["ld", "z", "x", "y", "z0_topo", "ld_hor"]
 
-    df["z"] = df["z"] + df["z0"]
+    df["z"] = df["z"] + df["z0_topo"]
 
     df.iloc[:, 1:] = np.round(df.iloc[:, 1:], 2)
 
     data[df.columns] = df[df.columns]
 
     return data
+
+
+def coords_merge_sections(ert):
+
+    df_l = pd.DataFrame(ert.sec[:, :], index=ert.sec[:, 0] * ert.el_space)
+    df_r = pd.DataFrame(ert.coords_int[:, 1:], index=ert.coords_int[:, 0])
+
+    df_l
+
+    df = pd.merge(df_l, df_r, "left", left_index=True, right_index=True)
+
+    df = df.reset_index()
+    df.columns = ["ld", "n_el", "sec", "n_sec", "x", "y", "z", "ld_hor"]
+
+    return df
