@@ -123,8 +123,8 @@ def plt_dtm(dtm):
 
 
 def plt_topo(ert, visible=True):
-    y1 = ert.sec["topo"]
-    y2 = ert.sec["dtm"]
+    y1 = ert.sec["z0_topo"]
+    y2 = ert.sec["z0_dtm"]
     y3 = ert.sec["dtm_dist"]
     x = ert.sec["ld_hor"]
 

@@ -159,6 +159,8 @@ def load_2dm(ert):
 
     ert.data.iloc[:, :4] = ert.data.iloc[:, :4].astype("Int64")
     ert.data["ID_meas"] = list(range(ert.data.shape[0]))
+    ert.data["ID_meas"] = ert.data["ID_meas"].astype(str).str.zfill(5)
+    ert.data["ID_meas"] = ert.line + "_" + ert.data["ID_meas"]
 
     ert.data["z"] = ert.data["doi"]
     ert.data["ld_hor"] = ert.data["ld"]

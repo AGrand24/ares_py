@@ -109,6 +109,6 @@ def fig_z_check(ert):
     fig = fig.add_trace(plt[2], secondary_y=True)
     fig = fig.add_trace(plt[3], secondary_y=True)
 
-    fig = fig.update_yaxes(secondary_y=False, scaleanchor="x1", scaleratio=1)
+    fig = fig.update_yaxes(secondary_y=False, scaleanchor="x1", scaleratio=20)
     fig = fig.update_yaxes(secondary_y=True, scaleanchor="x1", scaleratio=5)
     return fig

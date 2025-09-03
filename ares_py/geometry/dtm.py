@@ -92,11 +92,11 @@ def dtm_sample(ert, dtm, srtm=False):
     df_r.index = df_r["x"].astype(str) + df_r["y"].astype(str)
 
     df_dtm = pd.merge(df_l, df_r["z"], "left", left_index=True, right_index=True)
-    df_dtm = df_dtm.rename(columns={"z": "dtm"})
+    df_dtm = df_dtm.rename(columns={"z": "z0_dtm"})
 
-    sec_merge = np.column_stack([df_dtm.loc[:, "dtm"], df_dtm.loc[:, "dtm_dist"]])
+    sec_merge = np.column_stack([df_dtm.loc[:, "z0_dtm"], df_dtm.loc[:, "dtm_dist"]])
     sec_merge = np.round(sec_merge, 2)
-    df_sec[["dtm", "dtm_dist"]] = sec_merge
+    df_sec[["z0_dtm", "dtm_dist"]] = sec_merge
 
     df_dtm = df_dtm.loc[df_dtm["dtm_dist"] <= tolerance]
     df_dtm = df_dtm.reset_index(drop=True)
@@ -107,7 +107,7 @@ def dtm_sample(ert, dtm, srtm=False):
 def dtm_merge_data(ert):
 
     coords = ert.sec.values
-    coords = coords[:, [0, 8, 9]]
+    coords = coords[:, [0, 10, 9]]
 
     coords_int = coords_interpolate(coords)
     coords_int[:, 1:] = np.round(coords_int[:, 1:], 2)

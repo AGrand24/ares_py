@@ -66,15 +66,14 @@ def coords_merge_sections(ert):
     df = pd.merge(df_l, df_r, "left", left_index=True, right_index=True)
 
     df = df.reset_index()
-    df.columns = ["ld", "n_el", "sec", "n_sec", "x", "y", "topo", "ld_hor"]
+    df.columns = ["ld", "n_el", "sec", "n_sec", "x", "y", "z0_topo", "ld_hor"]
     df = df.dropna(subset="x")
     df["dtm"] = 0
     df["dtm_dist"] = 0
     return df
 
 
-def coords_get_z(ert, zmode="dtm"):
-    df = ert.data.copy()
+def coords_get_z(df, data_type, zmode="dtm"):
 
     if zmode == "dtm":
         z = "dtm"
@@ -84,10 +83,14 @@ def coords_get_z(ert, zmode="dtm"):
         df["dtm_dist"] = 0
 
     df["z0"] = df[f"z0_{z}"]
-    df["z"] = df["z0"] + df["doi"]
-    df["dtm"] = df["z0_dtm"] + df["doi"]
 
-    cols = ["z", "z0", "topo", "dtm", "z0_dtm", "z0_topo", "dtm_dist"]
+    if data_type == "data":
+        df["z"] = df["z0"] + df["doi"]
+        df["dtm"] = df["z0_dtm"] + df["doi"]
+        cols = ["z", "z0", "topo", "dtm", "z0_dtm", "z0_topo", "dtm_dist"]
+    else:
+        cols = ["z0", "z0_topo", "z0_dtm", "dtm_dist"]
+
     df[cols] = df[cols].round(2)
 
     return df

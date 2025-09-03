@@ -2,49 +2,65 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 
-from ares_py.get_ld import get_ld
+
 from ares_py.class_ert import ERT
-from ares_py.plot.fig import fig_meas_data, fig_meas_data_3d
-from ares_py.geometry.coords import (
-    coords_load,
-    coords_ld2d,
-    coords_interpolate,
-    coord_merge,
-    coords_merge_sections,
-    coords_get_z,
-    coords_create_csv,
-)
-from ares_py.geometry.dtm import tif_read, dtm_sample, dtm_merge_data, dtm_check
 
-fps = get_ld("input/klinovec/", ext=".2dm")["fp"]
-dtm = tif_read("input/klinovec/dtm.tif")
+ert = ERT("input/vlkanova/001.2dm").Process_2dm()
 
-data = pd.DataFrame()
-sec = pd.DataFrame()
-for fp in fps:
-    print(fp)
-    ert = ERT(fp).Load().Colorscales()
 
-    coords_create_csv(ert)
-    coords = coords_load(ert.fp["in_topo"])
-    ert.coords = coords_ld2d(coords)
-    ert.coords_int = coords_interpolate(ert.coords)
-    ert.data = coord_merge(ert)
-    ert.sec = coords_merge_sections(ert)
+# import pandas as pd
+# import numpy as np
+# import plotly.graph_objects as go
 
-    ert.check["dtm"] = dtm_check(ert)
+# from ares_py.get_ld import get_ld
+# from ares_py.class_ert import ERT
+# from ares_py.plot.fig import fig_meas_data, fig_meas_data_3d
+# from ares_py.geometry.coords import (
+#     coords_load,
+#     coords_ld2d,
+#     coords_interpolate,
+#     coord_merge,
+#     coords_merge_sections,
+#     coords_get_z,
+#     coords_create_csv,
+# )
+# from ares_py.geometry.dtm import tif_read, dtm_sample, dtm_merge_data, dtm_check
 
-    if ert.check["dtm"] == True:
+# fps = get_ld("input/vlkanova/", ext=".2dm")["fp"]
+# dtm = tif_read("input/klinovec/dtm.tif")
 
-        ert.sec, ert.dtm = dtm_sample(ert, dtm)
-        ert.data = dtm_merge_data(ert)
-        zmode = "dtm"
-    else:
-        zmode = "topo"
+# data = pd.DataFrame()
+# sec = pd.DataFrame()
+# for fp in fps:
+#     print(fp)
+#     ert = ERT(fp).Load().Colorscales()
 
-    ert.data = coords_get_z(ert, zmode)
-    fig = fig_meas_data(ert)
-    data = pd.concat([data, ert.data])
-    sec = pd.concat([sec, ert.sec])
+#     coords_create_csv(ert)
+#     coords = coords_load(ert.fp["in_topo"])
+#     ert.coords = coords_ld2d(coords)
+#     ert.coords_int = coords_interpolate(ert.coords)
+#     ert.data = coord_merge(ert)
+#     ert.sec = coords_merge_sections(ert)
 
-fig = fig_meas_data_3d(data, ert.cs_res, dtm, "tmp/test3d.html")
+#     ert.check["dtm"] = dtm_check(ert)
+
+#     if ert.check["dtm"] == True:
+
+#         ert.sec, ert.dtm = dtm_sample(ert, dtm)
+#         ert.data = dtm_merge_data(ert)
+#         zmode = "dtm"
+#     else:
+#         zmode = "topo"
+
+#     print("\t\t\t", zmode)
+#     ert.data = coords_get_z(ert.data, "data", zmode=zmode)
+#     ert.sec = coords_get_z(ert.sec, "sec", zmode=zmode)
+#     fig = fig_meas_data(ert)
+
+#     ert.data["ID_line"] = ert.line
+#     ert.sec["ID_line"] = ert.line
+
+#     data = pd.concat([data, ert.data])
+#     sec = pd.concat([sec, ert.sec])
+
+# # # fig = fig_meas_data_3d(data, sec, ert.cs_res, dtm, "tmp/test3d.html")
