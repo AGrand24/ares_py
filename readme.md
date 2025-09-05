@@ -1,9 +1,6 @@
 **Todo**:
 
 *Prio*:
-
-+ **Fix 0 z0_dtm**
-+ **Fix n values**
 + res2dinv conversion + read
 + inversion support
 + julo qc format

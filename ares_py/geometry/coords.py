@@ -22,6 +22,17 @@ def coords_ld2d(coords):
     return coords
 
 
+def coords_ld3d(coords):
+
+    diff = np.diff(coords[:, [1, 2, 3]], axis=0, prepend=np.nan)
+    ld_hor = np.power(diff, 2)
+    ld_hor = np.sum(ld_hor, axis=1)
+    ld_hor = ld_hor**0.5
+    ld_hor = np.nancumsum(ld_hor)
+    coords = np.column_stack([coords, ld_hor])
+    return coords
+
+
 def coords_interpolate(coords):
     l1 = coords[:, 0]
     step = 0.1

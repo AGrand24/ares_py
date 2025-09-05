@@ -6,7 +6,7 @@ import struct
 import shapely
 import plotly.graph_objects as go
 
-# version 20250821
+# version 20250822
 
 
 def ag_kriging(data, cell_size=1, variogram_model="exponential", exact=True):
@@ -24,6 +24,12 @@ def ag_kriging(data, cell_size=1, variogram_model="exponential", exact=True):
 
     grid_x = np.linspace(x0, x100, cells_x)
     grid_y = np.linspace(y0, y100, cells_y)
+
+    print("Gridding data:")
+    print(f"\tcell_size={cell_size}")
+    print(f"\tx={x0},{x100}")
+    print(f"\ty={y0},{y100}")
+    print(f"\tcells={grid_x.shape},{grid_y.shape}")
 
     ok = OrdinaryKriging(x, y, z, variogram_model=variogram_model, exact_values=exact)
 

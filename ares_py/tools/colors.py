@@ -64,3 +64,14 @@ def load_clr_scale(cs):
     )
 
     return cs
+
+
+def plotly_rgb_to_hex(rgb_string):
+    rgb_string = rgb_string.replace("rgb(", "").replace(")", "")
+    rgb_string = rgb_string.split(",")
+    rgb_string = [int(s.strip()) for s in rgb_string]
+    r = rgb_string[0]
+    g = rgb_string[1]
+    b = rgb_string[2]
+
+    return f"#{r:02x}{g:02x}{b:02x}"

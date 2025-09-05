@@ -12,7 +12,7 @@ def get_n_a_2dm(data):
         "wc": (1, 0),
     }
     ind_n = {
-        "ws": (1, 2),
+        "ws": (2, 0),
         "dd": (2, 0),
         "pp": (2, 1),
         "pd": (2, 1),
@@ -37,9 +37,9 @@ def get_n_a_2dm(data):
         a[idx] = a3
         n[idx] = n3
 
-    a = a.reshape(-1)
-    n = n.reshape(-1)
-    n /= a
+    # a = a.reshape(-1)
+    # n = n.reshape(-1)
+    n = n / a
 
     a = np.round(a, 2)
     n = np.round(n, 2)
