@@ -1,0 +1,9 @@
+/2dm
+/tmp
+__pycache__/
+*.pyc
+/projects
+/mcs
+ares_py/old/
+ares_py/docs/
+test.py
