@@ -199,7 +199,7 @@ def export_contours(
     geom = []
     attributes = []
     for lvl in levels:
-        contours = measure.find_contours(10**grid_z, lvl)
+        contours = measure.find_contours(grid_z, lvl)
 
         contours = [
             cnt

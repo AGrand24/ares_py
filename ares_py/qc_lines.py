@@ -15,7 +15,7 @@ def get_levels(df, lvl_frequency):
 
 
 def fig_qc_lines(prj, levels, ad, id_line):
-    rrange = [ad["res_min"], ad["res_max"] * 1.05]
+    rrange = [ad["res_min"], (ad["res_max"] * 1.05)]
     xrange = [ad["xmin"], ad["xmax"]]
     xrange = [x % 10000 for x in xrange]
 
@@ -26,8 +26,8 @@ def fig_qc_lines(prj, levels, ad, id_line):
         name = lvl[0][2]
         data = np.vstack(lvl)
         data[:, 1] = np.clip(data[:, 1], min=rrange[0], max=rrange[1])
-        marker = dict(color=colors[i], size=12)
-        line = dict(width=4)
+        marker = dict(color=colors[i], size=10)
+        line = dict(width=3)
         fig.add_trace(
             go.Scatter(
                 x=data[:, 0],
@@ -41,7 +41,7 @@ def fig_qc_lines(prj, levels, ad, id_line):
 
     fig.update_layout(
         legend=dict(
-            x=0,
+            x=0.02,
             y=0.98,
             orientation="h",
             font=dict(size=20),
@@ -66,11 +66,11 @@ def fig_qc_lines(prj, levels, ad, id_line):
         yaxis=dict(ticklabelposition="inside"),
     )
 
-    fig.update_yaxes(showgrid=True, gridwidth=6, tickfont=dict(size=25))
+    fig.update_yaxes(showgrid=True, gridwidth=6, tickfont=dict(size=25), nticks=20)
 
     fig.update_yaxes(tickprefix="       ")
 
-    fp = Path(prj.fps["qgis"], f"{str(id_line).zfill(3)}.png")
+    fp = Path(prj.fps["qcl"], f"{str(id_line).zfill(3)}.png")
     print(fp)
     fig.write_image(fp, width=width, height=height)
 
@@ -83,7 +83,7 @@ def fig_qc_lines(prj, levels, ad, id_line):
 
     lines = [str(l) + "\n" for l in lines]
 
-    fp = Path(prj.fps["qgis"], f"{str(id_line).zfill(3)}.pgw")
+    fp = Path(prj.fps["qcl"], f"{str(id_line).zfill(3)}.pgw")
 
     with open(fp, "w") as file:
         file.writelines(lines)

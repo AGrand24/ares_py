@@ -48,6 +48,7 @@ class Project:
         self.fps["crd"] = Path(root, "02_coordinates/")
         self.fps["inv"] = Path(root, "03_inversion/")
         self.fps["grd"] = Path(root, "04_grd/")
+        self.fps["qcl"] = Path(root, "05_qcl/")
         self.fps["qgis"] = Path(root, "qgis/")
 
         # self.fps["output"] = Path(root, "output/")
@@ -265,7 +266,7 @@ class Project:
                         slope=1,
                         nugget=0.1,
                     )
-
+                    grd[2] = 10 ** grd[2]
                     grid_dict[type][line] = grd
                     self.grids = grid_dict
                     print("Exporting surfer grid..")
@@ -498,9 +499,8 @@ class Project:
 
         ld = get_ld(self.fps["grd"], ext=".grd")
         ld["inv_type"] = ld["f"].str.slice(4, None)
-
         for type in ld["inv_type"].unique():
-            ld_type = ld.copy()
+            ld_type = ld.copy(deep=True)
             ld_type = ld_type.loc[ld_type["inv_type"] == type]
 
             cnt = []
@@ -530,4 +530,4 @@ class Project:
             cnt = pd.concat(cnt).reset_index(drop=True)
             cnt.to_file(self.fps["ert"], layer=f"grd_contours_{type}_ls")
 
-            return self
+        return self
