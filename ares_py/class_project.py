@@ -5,7 +5,7 @@ import shutil
 import geopandas as gpd
 import shapely
 from pathlib import Path
-from shapely import MultiPoint
+from shapely import Polygon
 
 
 from ares_py.class_ert import ERT
@@ -24,7 +24,12 @@ from ares_py.coords import (
     export_topo_pt,
 )
 from ares_py.sections import ld2sec
-from ares_py.agrid import ag_kriging, ag_export_surfer
+from ares_py.agrid import (
+    run_krg,
+    export_surfer,
+    export_contours,
+    read_surfer6_binary_grid,
+)
 from ares_py.qc_lines import get_levels, fig_qc_lines
 
 
@@ -236,46 +241,82 @@ class Project:
         return self
 
     def Grid_data(self, skip=None, cell_size=1):
-        ld = get_ld(self.fps["grd"], ext=".tsv")
+        grid_dict, ld = self.Get_grid_dictionary()
 
-        for fp, fn in zip(ld["fp"], ld["f"]):
+        for fp, fn, type, line in zip(ld["fp"], ld["f"], ld["type"], ld["ID_line"]):
             try:
                 line = int(fn[:3])
-                df = pd.read_csv(fp, sep="\t")
+                df = pd.read_csv(fp)
                 df["x"] = df["x"] % 10000
                 df["x"] += line * 10000
 
                 if skip != None and line not in skip:
                     print(f"\nGridding:\t {fp}")
-                    data = [df["x"], df["z"], df["res"]]
-                    data[2] = np.log10(data[2])
-                    grd = ag_kriging(data, cell_size=cell_size, exact=True)
-                    grd[2] = 10 ** grd[2]
-                    fp_out = str(fp).replace(".tsv", ".grd")
-                    ag_export_surfer(grd, 2, fp_out)
+                    x = df["x"]
+                    y = df["z"]
+                    z = df["res"].clip(self.res_range[0], self.res_range[1])
+                    z = np.log10(z)
+                    grd = run_krg(
+                        x=x,
+                        y=y,
+                        z=z,
+                        cell_size=cell_size,
+                        exact=True,
+                        slope=1,
+                        nugget=0.1,
+                    )
+
+                    grid_dict[type][line] = grd
+                    self.grids = grid_dict
+                    print("Exporting surfer grid..")
+                    fp_out = str(fp).replace(".csv", ".grd")
+                    export_surfer(grd, 2, fp_out)
             except:
                 print(f"\nError- {fp}\n")
 
         return self
 
-    def Grid_mask(self):
+    def Export_mask(self):
+        gdf_topo = gpd.read_file(self.fps["ert"], layer="ert2d_topo_pt")
 
+        id_line = []
         geom = []
-        lines = []
-        for ert in self.ert.values():
-            line = int(ert.line)
-            data = ert.data
-            x = ert.data["ld_hor"] + 10000 * line
-            y = ert.data["z"]
+        for line in self.data["ID_line"].unique():
 
-            points = MultiPoint(list(zip(x, y)))
-            polygon = shapely.concave_hull(points, 0.03)
-            polygon = shapely.buffer(polygon, 0.25)
-            geom.append(polygon)
-            lines.append(line)
+            data = self.data.copy()
+            data = data.loc[data["ID_line"] == line]
 
-        gdf = gpd.GeoDataFrame(data={"ID_line": lines}, geometry=geom, crs=self.crs)
-        gdf.to_file(self.fps["ert"], layer="ert2d_grd_mask_pl", engine="pyogrio")
+            gb = data.groupby("ld_hor", as_index=False)["z"].agg("min").values
+            gb[:, 0] += line * 10000
+            gb[:, 1] -= 1
+            gb = gb[::-1]
+
+            topo = gdf_topo.copy()
+            topo = topo.loc[topo["ID_line"] == line]
+            mask = (topo["ld_hor"] >= (gb[:, 0].min() - 1)) & (
+                topo["ld_hor"] <= (gb[:, 0].max() + 1)
+            )
+            topo = topo.loc[mask]
+            topo = topo[["ld_hor", "z0"]].values
+            # topo[:,1]-=0.2
+
+            gb[-1, 0] = topo[0, 0]
+            gb[0, 0] = topo[-1, 0]
+
+            pts = np.vstack([topo, gb])
+            geom.append(Polygon([(x, y) for x, y in zip(pts[:, 0], pts[:, 1])]))
+
+        gdf = gpd.GeoDataFrame(data={"ID_line": id_line}, geometry=geom, crs=self.crs)
+
+        fp = self.fps["ert"]
+        gdf.to_file(fp, layer="mask_pl", engine="pyogrio")
+
+        layers = gpd.list_layers(fp)["name"].values
+
+        if not "mask_man_pl" in layers:
+            gdf.to_file(fp, layer="mask_man_pl", engine="pyogrio")
+            print("Copied mask_pl to mask_man_pl!")
+
         return self
 
     def Merge_contours(self, type):
@@ -349,9 +390,10 @@ class Project:
         ld = ld.loc[mask]
 
         for fp in ld["fp"]:
-            fp_out = Path(self.fps["grd"], Path(fp).stem + ".tsv")
-            fp_out = str(fp_out).replace("_topres.tsv", "_r2d.tsv")
-            fp_out = str(fp_out).replace("_topreslog.tsv", "_r2d.tsv")
+            line = int(Path(fp).stem[:3])
+            fp_out = Path(self.fps["grd"], Path(fp).stem + ".csv")
+            fp_out = str(fp_out).replace("_topres.csv", "_r2d.csv")
+            fp_out = str(fp_out).replace("_topreslog.csv", "_r2d.csv")
 
             if "_topres.dat" in fp:
                 res_col = 2
@@ -362,12 +404,17 @@ class Project:
                 df.iloc[:, 2] = 10 ** df.iloc[:, 2]
             else:
                 res_col = 3
-                df = pd.read_csv(fp, sep="\t", skiprows=1, header=None)
+                df = pd.read_csv(fp, skiprows=1, header=None, sep="\t")
 
             df = df.iloc[:, [0, 1, res_col, res_col]]
             df.iloc[:, 3] = np.log10(df.iloc[:, 2])
             df.columns = ["x", "z", "res", "log_res"]
-            df.to_csv(fp_out, sep="\t", index=False)
+            df["res"] = df["res"].round(1)
+
+            df = df.loc[np.abs(df["res"]) != np.inf]
+            df["x"] += line * 10000
+
+            df.to_csv(fp_out, index=False)
             print(f"Exported...{fp_out}")
 
         return self
@@ -405,7 +452,7 @@ class Project:
 
     def Export_gpkg_inv(self):
 
-        ld = get_ld(self.fps["grd"], ext=".tsv")
+        ld = get_ld(self.fps["grd"], ext=".csv")
         ld["type"] = ld["f"].str.slice(4, None)
         ld["ID_line"] = ld["f"].str.slice(None, 3).astype(int)
 
@@ -415,13 +462,13 @@ class Project:
 
             gdf = []
             for fp, line in zip(ld_type["fp"], ld_type["ID_line"]):
-                df = pd.read_csv(fp, sep="\t")
+                df = pd.read_csv(fp)
                 df["ID_line"] = line
                 gdf.append(df)
 
             gdf = pd.concat(gdf).reset_index(drop=True)
             gdf.columns = ["ld_hor", "z", "res", "res_log", "ID_line"]
-            gdf["ld_hor"] += gdf["ID_line"] * 10000
+            # gdf["ld_hor"] += gdf["ID_line"] * 10000
             geom = gpd.points_from_xy(gdf["ld_hor"], gdf["z"])
             gdf = gpd.GeoDataFrame(gdf, geometry=geom, crs=self.crs)
 
@@ -431,3 +478,56 @@ class Project:
             gdf.to_file(self.fps["ert"], layer=f"inv_{type}_pt", engine="pyogrio")
 
         return self
+
+    def Get_grid_dictionary(self):
+
+        ld = get_ld(self.fps["grd"], ext=".csv")
+        ld["type"] = ld["f"].str.slice(4, None)
+        ld["ID_line"] = ld["f"].str.slice(None, 3).astype("Int64")
+
+        keys_type = ld["type"].unique()
+        keys_line = ld["ID_line"].unique()
+
+        grid_dict = {key: None for key in keys_type}
+        for key in grid_dict.keys():
+            grid_dict[key] = {key: None for key in keys_line}
+
+        return grid_dict, ld
+
+    def Export_contours(self):
+
+        ld = get_ld(self.fps["grd"], ext=".grd")
+        ld["inv_type"] = ld["f"].str.slice(4, None)
+
+        for type in ld["inv_type"].unique():
+            ld_type = ld.copy()
+            ld_type = ld_type.loc[ld_type["inv_type"] == type]
+
+            cnt = []
+            for fp in ld_type["fp"]:
+                print(f"Exporting contours - {fp}")
+                try:
+                    grid, header = read_surfer6_binary_grid(fp)
+                    x = np.array([header["xlo"], header["xhi"]])
+                    y = np.array([header["ylo"], header["yhi"]])
+                    grid = [x, y, grid]
+
+                    contour_lvls = np.arange(0, self.res_range[1] + 10, 10)
+                    cnt.append(
+                        export_contours(
+                            grid,
+                            z_index=2,
+                            levels=contour_lvls,
+                            mask=True,
+                            fp_mask=self.fps["ert"],
+                            layer_mask="mask_man_pl",
+                            crs=self.crs,
+                        )
+                    )
+                except:
+                    print("Error exporting contours..")
+
+            cnt = pd.concat(cnt).reset_index(drop=True)
+            cnt.to_file(self.fps["ert"], layer=f"grd_contours_{type}_ls")
+
+            return self

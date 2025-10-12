@@ -1,69 +1,101 @@
-import numpy as np
+import pandas as pd
 import geopandas as gpd
-from shapely import MultiPoint, concave_hull
-from pykrige import OrdinaryKriging
-import struct
-import shapely
+import numpy as np
 import plotly.graph_objects as go
+import plotly.io as pio
+import struct
+from pykrige import OrdinaryKriging
+from shapely import LineString, MultiPolygon
+from skimage import measure
 
-# version 20250822
+
+pio.templates.default = "plotly_dark"
+pd.options.plotting.backend = "plotly"
 
 
-def ag_kriging(data, cell_size=1, variogram_model="exponential", exact=True):
-    x = data[0]
-    y = data[1]
-    z = data[2]
+def parse_data(x, y, z):
+    x = np.array(x)
+    y = np.array(y)
+    z = np.array(z)
+
+    data = np.column_stack([x, y, z])
+    df = pd.DataFrame(data, columns=["x", "y", "z"])
+
+    df = df.dropna()
+    df = df.loc[np.abs(df["z"]) != np.inf]
+    return df
+
+
+def arse_grid(data, cell_size):
+    x = data["x"]
+    y = data["y"]
 
     x0 = min(x) - 5
     y0 = min(y) - 5
     x100 = max(x) + 5
     y100 = max(y) + 5
 
-    cells_x = int((x100 - x0) / cell_size)
-    cells_y = int((y100 - y0) / cell_size)
+    grid_x = np.arange(x0, x100 + cell_size, cell_size)
+    grid_y = np.arange(y0, y100 + cell_size, cell_size)
 
-    grid_x = np.linspace(x0, x100, cells_x)
-    grid_y = np.linspace(y0, y100, cells_y)
-
-    print("Gridding data:")
-    print(f"\tcell_size={cell_size}")
-    print(f"\tx={x0},{x100}")
-    print(f"\ty={y0},{y100}")
-    print(f"\tcells={grid_x.shape},{grid_y.shape}")
-
-    ok = OrdinaryKriging(x, y, z, variogram_model=variogram_model, exact_values=exact)
-
-    grid_z, ss = ok.execute("grid", grid_x, grid_y)
-    mesh = np.meshgrid(grid_x, grid_y)
-
-    # mesh[2] = grid_z.data
-    return [mesh[0], mesh[1], grid_z.data]
-
-
-def ag_mask(grid, poly_mask):
-
-    grid_x = grid[0]
-    grid_y = grid[1]
-    grid_z = grid[2]
-
-    z_flat = grid_z.flatten()
-
-    points = gpd.GeoSeries(gpd.points_from_xy(grid_x.flatten(), grid_y.flatten()))
-    mask = poly_mask.contains(points)
-    mask = np.where(mask == False)
-    z_flat[mask] = np.nan
-    grid_z_masked = z_flat.reshape(grid_z.shape)
-    grid.append(grid_z_masked)
+    grid = [grid_x, grid_y]
     return grid
 
 
-def ag_pt2pl(coords: list, ratio=0.2, buffer=1):
-    geometry = gpd.points_from_xy(coords[0], coords[1])
-    pl = concave_hull(MultiPoint(geometry), ratio).buffer(buffer)
-    return pl
+def plt_data_points(data):
+    data = data.values
+    marker = dict(size=6, color=data[:, 2], colorscale="Turbo", cmin=0, cmax=4)
+    plt = go.Scatter(
+        x=data[:, 0],
+        y=data[:, 1],
+        mode="markers",
+        marker=marker,
+        hovertext=data[:, 2],
+        name="Data points",
+        showlegend=True,
+    )
+    return plt
 
 
-def ag_export_surfer(grid, z_index, fp):
+def custom_linear_variogram(params, dist):
+
+    slope = params[0]
+    nugget = params[1]
+    return slope * dist + nugget
+
+
+def run_krg(x, y, z, cell_size, slope=1, nugget=0.1, exact=True):
+    data = parse_data(x, y, z)
+    grid = arse_grid(data, cell_size)
+
+    custom_params = [slope, nugget]
+
+    ok = OrdinaryKriging(
+        data["x"],
+        data["y"],
+        data["z"],
+        variogram_model="custom",  # Set to 'custom'
+        # variogram_model="linear",  # Set to 'custom'
+        verbose=False,
+        variogram_function=custom_linear_variogram,
+        variogram_parameters=custom_params,
+        exact_values=exact,
+    )
+
+    txt = ["Kriging data- " + f"cs={cell_size}"]
+    txt.append(f"x=[{grid[0].min()},{grid[0].max()}]")
+    txt.append(f"y=[{grid[1].min()},{grid[1].max()}]")
+    txt.append(f"cells={grid[0].shape[0]}x{grid[1].shape[0]}")
+    txt.append(f"{slope}x+{nugget}")
+    txt = (", ").join(txt)
+    print(txt)
+
+    grid.extend(ok.execute("grid", grid[0], grid[1]))
+
+    return grid
+
+
+def export_surfer(grid, z_index, fp):
     """
     Saves a NumPy 2D array to a Surfer 6 Binary Grid file.
 
@@ -127,34 +159,118 @@ def ag_export_surfer(grid, z_index, fp):
         f.write(flat_data.tobytes())
 
 
-def ag_plot(grd, poly_mask, w=500, h=500, crange=[None, None]):
-    poly_mask_coords = shapely.get_coordinates(poly_mask)
-
+def plot(data, grid):
     fig = go.Figure()
-    plt = []
-
-    for i in list(range(2, len(grd))):
-        plt.append(
-            go.Heatmap(
-                z=grd[i],
-                dx=np.ptp(grd[0]) / grd[0].shape[1],
-                dy=np.ptp(grd[1]) / grd[0].shape[0],
-                x0=grd[0].min(),
-                y0=grd[1].min(),
-                colorscale="Spectral_r",
-                zmin=crange[0],
-                zmax=crange[1],
-                showlegend=True,
-            )
+    plt_pts = plt_data_points(data)
+    fig = fig.add_trace(plt_pts)
+    fig = fig.add_trace(
+        go.Heatmap(
+            z=grid[2],
+            x=grid[0],
+            y=grid[1],
+            colorscale="Turbo",
+            zmin=0,
+            zmax=4,
+            showlegend=True,
         )
-
-    plt.append(
-        go.Scatter(x=poly_mask_coords[:, 0], y=poly_mask_coords[:, 1], hoverinfo="skip")
     )
-    fig.add_traces(plt)
+    fig = fig.update_yaxes(scaleanchor="x1", scaleratio=1)
+    fig = fig.update_layout(
+        height=900,
+        width=1600,
+    )
+    fig.write_html("grid_compare.html")
 
-    fig.update_yaxes(scaleanchor="x1", scaleratio=1)
-    fig.update_layout(width=w, height=h)
-    fig.show()
 
-    return fig
+def export_contours(
+    grid,
+    levels,
+    z_index=2,
+    mask=False,
+    fp_mask=None,
+    layer_mask=None,
+    crs=8353,
+):
+
+    grid_z = np.transpose(grid[z_index])
+    x0 = grid[0].min()
+    y0 = grid[1].min()
+
+    geom = []
+    attributes = []
+    for lvl in levels:
+        contours = measure.find_contours(10**grid_z, lvl)
+
+        contours = [
+            cnt
+            + np.column_stack([np.full(cnt.shape[0], x0), np.full(cnt.shape[0], y0)])
+            for cnt in contours
+        ]
+
+        geom.extend([LineString(contour) for contour in contours])
+        attributes.extend([{"level": lvl, "id": i} for i, _ in enumerate(contours)])
+
+    gdf = gpd.GeoDataFrame(attributes, geometry=geom, crs=crs)
+
+    if mask == True:
+        gdf_mask = gpd.read_file(fp_mask, layer=layer_mask)
+        geom = [MultiPolygon(gdf_mask["geometry"])]
+        gdf_mask = gpd.GeoDataFrame(geometry=geom, crs=crs)
+        gdf = gpd.clip(gdf, gdf_mask)
+
+    return gdf
+
+
+def read_surfer6_binary_grid(filename):
+    """
+    Reads a Surfer 6 binary grid file and returns the grid data as a NumPy array.
+
+    Args:
+        filename (str): The path to the Surfer 6 binary grid file.
+
+    Returns:
+        numpy.ndarray: A 2D NumPy array containing the grid data.
+        dict: A dictionary containing the header information.
+    """
+    with open(filename, "rb") as f:
+        # Read the header
+        header_format = "<4s2h6d"
+        header_size = struct.calcsize(header_format)
+        header_bytes = f.read(header_size)
+
+        if not header_bytes:
+            raise ValueError("File is empty or header is incomplete.")
+
+        header_data = struct.unpack(header_format, header_bytes)
+
+        magic_word = header_data[0].decode("ascii")
+        if magic_word != "DSBB":
+            raise ValueError("Not a valid Surfer 6 binary grid file.")
+
+        nx = header_data[1]
+        ny = header_data[2]
+        xlo = header_data[3]
+        xhi = header_data[4]
+        ylo = header_data[5]
+        yhi = header_data[6]
+        zlo = header_data[7]
+        zhi = header_data[8]
+
+        header_info = {
+            "nx": nx,
+            "ny": ny,
+            "xlo": xlo,
+            "xhi": xhi,
+            "ylo": ylo,
+            "yhi": yhi,
+            "zlo": zlo,
+            "zhi": zhi,
+        }
+
+        # Read the grid data
+        data = np.fromfile(f, dtype=np.float32)
+
+        # Reshape the data into a 2D array
+        grid_data = data.reshape((ny, nx))
+
+        return grid_data, header_info
