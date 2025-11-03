@@ -196,11 +196,21 @@ def export_contours(
     x0 = grid[0].min()
     y0 = grid[1].min()
 
+    cx = np.ptp(grid[1]) / (grid[2].shape[0] - 1)
+    cy = np.ptp(grid[0]) / (grid[2].shape[1] - 1)
+
     geom = []
     attributes = []
     for lvl in levels:
         contours = measure.find_contours(grid_z, lvl)
 
+        # multiply image coordinates by cellsize coeficients
+        contours = [
+            cnt
+            * np.column_stack([np.full(cnt.shape[0], cx), np.full(cnt.shape[0], cy)])
+            for cnt in contours
+        ]
+        #  add x0,y0 to image coordinates
         contours = [
             cnt
             + np.column_stack([np.full(cnt.shape[0], x0), np.full(cnt.shape[0], y0)])

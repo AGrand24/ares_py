@@ -2,7 +2,7 @@ from shapely import LineString
 import geopandas as gpd
 
 
-def pt_to_ls(df, x, y, order, groupby, cols=None, crs=3857, z=None):
+def pt_to_ls(df, x, y, order, groupby, cols=None, crs=8353, z=None):
     if z == None:
         df["z"] = 0
     else:
@@ -20,3 +20,8 @@ def pt_to_ls(df, x, y, order, groupby, cols=None, crs=3857, z=None):
     ls = gpd.GeoDataFrame(data=id_line, geometry=geom, crs=crs)
 
     return ls
+
+
+def get_x2d(x, line):
+    x2d = x + 10000 * int(line)
+    return x2d

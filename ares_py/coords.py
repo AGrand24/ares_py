@@ -4,55 +4,22 @@ import geopandas as gpd
 import os
 from pathlib import Path
 from ares_py.tools.geometry_tools import pt_to_ls
+from ares_py.electrodes import ld2sec
+import plotly.graph_objects as go
 
 
-def export_topo_ls(prj):
+def parse_ape(fp):
+    "Parse data from .ape file for prj.Merge_coordinates()"
+    df = pd.read_csv(fp, sep="\t")
 
-    df = prj.topo[["ID_line", "ld_hor", "z0", "ld"]].copy()
-    df["ld_hor"] += df["ID_line"].astype(float) * 10000
-
-    gdf_ls = pt_to_ls(df, x="ld_hor", y="z0", order="ld", groupby="ID_line", crs=8353)
-    gdf_ls.to_file(prj.fps["ert"], layer="ert2d_topo_ls", engine="pyogrio")
-
-
-def export_topo_pt(prj):
-
-    df = prj.topo[["ID_line", "ld_hor", "z0", "ld"]].copy()
-    df["ld_hor"] += df["ID_line"].astype(float) * 10000
-
-    geom = gpd.points_from_xy(x=df["ld_hor"], y=df["z0"])
-    gdf_pt = gpd.GeoDataFrame(df, geometry=geom, crs=8353)
-    gdf_pt.to_file(prj.fps["ert"], layer="ert2d_topo_pt", engine="pyogrio")
-
-
-def export_crd_csv(df, line, prj):
-    fp = Path(prj.fps["crd"], str(line).zfill(3) + "_plan.csv")
-    df.to_csv(fp)
-
-
-def export_crd_man(prj):
-
-    gdf = gpd.read_file(prj.fps["ert"], layer="crd_man_proc_pt")
-    gdf = gdf.set_index("ld")
-
-    for ert in prj.ert.values():
-        line = int(ert.line)
-        tmp = gdf.copy().loc[gdf["ID_line"] == line]
-        tmp = tmp[["ld_hor", "x", "y", "z0"]]
-        tmp = tmp.add_suffix("_man")
-        tmp = tmp.round(2)
-        tmp = tmp.reset_index()
-
-        fp_out = Path(prj.fps["crd"], f"{ert.line}_man.csv")
-        tmp.to_csv(fp_out, index=False)
-
-
-def coords_load(fp):
-
-    df = pd.read_csv(fp, header=None).iloc[:, :4]
-    coords = df.values.astype(float)
-    coords = np.round(coords, 2)
-    return coords
+    df_int = df.copy()
+    df_int = df_int.set_index("ld")
+    cols = ["ld"] + df_int.columns.to_list()
+    df_int = coords_interpolate(df_int.index.values, df_int, step=1)
+    df_int = np.round(df_int, 2)
+    df_int = pd.DataFrame(df_int, columns=cols)
+    df_int = df_int.loc[df_int["ld"] % 1 == 0]
+    return df, df_int
 
 
 def calc_line_distance(x, y, z=None):
@@ -72,21 +39,9 @@ def calc_line_distance(x, y, z=None):
     return ld
 
 
-def calc_topo_ld_hor(ld, z0):
-    # calc ld_hor for topo -takes into account only ld and z0 not XYZ,
-    # considers line to be straight in XY plane
-    crd = np.column_stack([ld, z0])
-    diff = np.diff(crd, axis=0)
-    diff = np.power(diff, 2)
-    ld_hor = (diff[:, 0] - diff[:, 1]) ** 0.5
-    ld_hor = [0] + list(ld_hor)
-    ld_hor = np.cumsum(ld_hor)
-    return ld_hor
-
-
-def coords_interpolate(reference, values):
+def coords_interpolate(reference, values, step=0.1):
     l1 = reference
-    step = 0.1
+    step = step
     l2 = np.arange(0, reference.max() + step, step)
 
     interpolated = []
@@ -100,20 +55,23 @@ def coords_interpolate(reference, values):
 
 def process_line_distance(gdf):
     gdf_out = []
+    crs = gdf.crs
 
     for line in gdf["ID_line"].unique():
         tmp = gdf.loc[gdf["ID_line"] == line].copy()
         id_line = tmp["ID_line"].iloc[0]
         el_space = tmp["el_space"].iloc[0]
 
-        crd = tmp.get_coordinates(include_z=True)
-        ld = calc_line_distance(x=crd["x"], y=crd["y"], z=crd["z"])
+        tmp[["x", "y", "z"]] = tmp.get_coordinates(include_z=True)
+        tmp = tmp[["x", "y", "z", "angle"]]
 
-        crd_int = coords_interpolate(reference=ld, values=crd)
+        ld = calc_line_distance(x=tmp["x"], y=tmp["y"], z=tmp["z"])
+
+        crd_int = coords_interpolate(reference=ld, values=tmp)
         crd_int = np.round(crd_int, 2)
 
         df = pd.DataFrame(crd_int)
-        df.columns = ["ld", "x", "y", "z0"]
+        df.columns = ["ld", "x", "y", "z0", "angle"]
 
         df["ID_line"] = id_line
         df["el_space"] = el_space
@@ -127,78 +85,126 @@ def process_line_distance(gdf):
 
     gdf_out = pd.concat(gdf_out)
     gdf_out = gdf_out.reset_index(drop=True)
+    geom = gpd.points_from_xy(gdf_out["x"], gdf_out["y"], gdf_out["z0"])
+    gdf_out = gpd.GeoDataFrame(gdf_out, geometry=geom, crs=crs)
 
     return gdf_out
 
 
-def coord_merge(ert):
-    data = ert.data.copy()
-    coords_int = ert.coords_int.copy()
+def gpkg_coord_pt(mode, prj):
 
-    df_l = data.copy()[["ld", "doi"]]
-    df_r = pd.DataFrame(coords_int[:, 1:], index=coords_int[:, 0])
+    fp = prj.fps["spatial"]
 
-    df = pd.merge(df_l, df_r, "left", left_on="ld", right_index=True)
-    df.columns = ["ld", "topo", "x", "y", "z0_topo", "ld_hor"]
-
-    df["topo"] = df["topo"] + df["z0_topo"]
-
-    cols = df.columns[1:]
-    data = data.reset_index(drop=True)
-    df = df.reset_index(drop=True)
-    data[cols] = df[cols]
-
-    return data
-
-
-def coords_merge_sections(ert):
-
-    df_l = pd.DataFrame(ert.sec[:, :], index=ert.sec[:, 0] * ert.el_space)
-    df_r = pd.DataFrame(ert.coords_int[:, 1:], index=ert.coords_int[:, 0])
-
-    df_l
-
-    df = pd.merge(df_l, df_r, "left", left_index=True, right_index=True)
-
-    df = df.reset_index()
-    df.columns = ["ld", "n_el", "sec", "n_sec", "x", "y", "z0_topo", "ld_hor"]
-    df = df.dropna(subset="x")
-    df["dtm"] = 0
-    df["dtm_dist"] = 0
-    return df
-
-
-def coords_get_z(df, data_type, zmode="dtm"):
-
-    if zmode == "dtm":
-        z = "dtm"
+    if mode == "plan":
+        layer = "ert_plan_pt"
+    elif mode == "crd":
+        layer = "ert_pt"
     else:
-        z = "topo"
-        df["z0_dtm"] = df["z0_topo"].max()
-        df["dtm_dist"] = 0
+        fp = "tmp/proc.gpkg"
+        layer = "tmp"
 
-    df["z0"] = df[f"z0_{z}"]
+    gdf = gpd.read_file("C://tmp/crd_proc_tmp.gpkg")
 
-    if data_type == "data":
-        df["z"] = df["z0"] + df["doi"]
-        df["dtm"] = df["z0_dtm"] + df["doi"]
-        cols = ["z", "z0", "topo", "dtm", "z0_dtm", "z0_topo", "dtm_dist"]
-    else:
-        cols = ["z0", "z0_topo", "z0_dtm", "dtm_dist"]
+    gdf_out = process_line_distance(gdf)
+    gdf_out = import_el_space(gdf_out.drop(columns="el_space"), prj=prj)
 
-    df[cols] = df[cols].round(2)
+    electrodes = ld2sec(gdf_out["ld"], el_space=gdf_out["el_space"].iloc[0])
+    electrodes = pd.DataFrame(electrodes, columns=["el", "sec", "el_sec"])
+    gdf_out = pd.concat([gdf_out, electrodes], axis=1)
 
-    return df
+    gdf_out.to_file(fp, layer=layer)
+    print(f"Exported - {fp} - {layer}")
+    print(
+        gdf_out.groupby("ID_line").agg(
+            el_space=("el_space", "min"),
+            ld_hor=("ld_hor", "max"),
+            ld=("ld", "max"),
+        )
+    )
+    return gdf_out
 
 
-def create_csv_flat(df, fp):
-    el_max = df[["c1", "c2", "p1", "p2"]].max().max()
+def gpkg_rec_ls(prj, overwrite=False):
+    gdf = gpd.read_file(prj.fps["rec"], layer="rec_ert_pt")
 
-    ld = np.arange(0, el_max, 1)
-    data = np.column_stack([ld, ld, ld, np.full((ld.shape[0], 2), 0)])
+    gdf[["x", "y", "z"]] = gdf.get_coordinates(include_z=True)
 
-    df = pd.DataFrame(data)
-    df.columns = ["ld", "ld_hor", "x", "y", "z0"]
-    df = df.set_index("ld")
-    df = df.add_suffix("_flat")
-    df.to_csv(fp)
+    gdf_rec = pt_to_ls(gdf, x="x", y="y", z="z", order="ld", groupby="ID_line")
+
+    layers = gpd.list_layers(prj.fps["spatial"]).values
+
+    gdf_rec = import_el_space(gdf_rec, prj=prj)
+
+    layer_out = "ert_rec_man_ls"
+    if overwrite == True or layer_out not in layers:
+        gdf_rec.to_file(prj.fps["spatial"], layer=layer_out)
+        print(f"Exported - {prj.fps['spatial']} - {layer_out}")
+        print("\n")
+    return gdf_rec
+
+
+def import_el_space(gdf, prj):
+    "imports el space based on ID_line from spatial gpkg - ert_plan_ls"
+    try:
+        gdf_plan = gpd.read_file(prj.fps["spatial"], layer="ert_plan_ls")
+        gdf_plan = gdf_plan.set_index("ID_line")["el_space"]
+
+        gdf = gdf.set_index("ID_line")
+        gdf = gdf.join(gdf_plan).reset_index()
+    except:
+        print("Plan layer not found - ignoring el spaces in ert_rec_man_ls!")
+
+    return gdf
+
+
+def plot_coords_3d(gdf):
+
+    fig = go.Figure()
+
+    marker = dict(size=2, color=gdf["ID_line"], colorscale="Spectral")
+
+    custom_data = gdf[["ID_line", "ld", "ld_hor"]].values
+    plt = go.Scatter3d(
+        x=gdf["x"],
+        y=gdf["y"],
+        z=gdf["z0"],
+        mode="markers",
+        marker=marker,
+        customdata=custom_data,
+        hovertemplate="ID_line:%{customdata[0]}<br>ld:%{customdata[1]}<br>ld_hor:%{customdata[2]}<br>",
+    )
+
+    camera = dict(eye=dict(x=3.5, y=3.5, z=3.5))
+
+    fig = fig.update_layout(
+        scene=dict(
+            aspectmode="data",
+            aspectratio=dict(x=1, y=1, z=1),
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            zaxis=dict(visible=False),
+        ),
+        scene_camera=camera,
+        margin=dict(t=0, b=0, l=0, r=0),
+        width=600,
+        height=400,
+    )
+
+    fig.add_trace(plt)
+    fig.show()
+    return fig
+
+
+def csv_topo(prj):
+    gdf = gpd.read_file(prj.fps["spatial"], layer="ert_pt")
+
+    for line in gdf["ID_line"].unique():
+        tmp = gdf.loc[gdf["ID_line"] == line]
+        tmp = tmp.loc[tmp["ld"] % tmp["el_space"] == 0]
+
+        fp_out = Path(prj.fps["crd"], f"{str(line).zfill(3)}_topo.csv")
+
+        tmp = tmp[["ld", "ld_hor", "z0", "x", "y", "angle"]]
+        tmp = tmp.dropna()
+
+        tmp.to_csv(fp_out, index=False)

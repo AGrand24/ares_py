@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 
-def format_data(df):
+def parse_data(df):
     e0 = np.min(df.iloc[:, :4], axis=1)
     data = np.column_stack([e0, df["a"], df["n"], df["res"]])
     data = pd.DataFrame(data).astype(str)
@@ -32,27 +32,37 @@ def get_array_id(array):
     return array_id[array]
 
 
-def parse_dat_lines(ert):
+def dat_file_parse(fp_apd, project_name):
+    fp_ape = str(fp_apd).replace(".apd", ".ape")
+    df_data = pd.read_csv(fp_apd, sep="\t")
+    line = df_data["ID_line"].iloc[0]
+    el_space = df_data["el_space"].iloc[0]
+    array = df_data["arr"].iloc[0]
 
-    lines = [f"{ert.project.name}_{ert.line}", float(ert.el_space) / 2]
-    lines.append(get_array_id(ert.arrays[0]))
-    lines.append(ert.data.shape[0])
-    lines.extend([0, 0])
+    data = parse_data(df_data)
 
-    lines.extend(format_data(ert.data))
-    lines.append(2)
-    lines.append(len(ert.topo))
-    lines.extend(parse_topo(ert.topo))
-    lines.extend([1, 0, 0, 0, 0])
-    lines = [str(l) + "\n" for l in lines]
-    return lines
+    df_topo = pd.read_csv(fp_ape, sep="\t")
+    topo = parse_topo(df_topo)
+
+    dat_lines = [f"{project_name}_{line}", float(el_space) / 2]
+
+    dat_lines.append(get_array_id(array))
+    dat_lines.append(len(data))
+    dat_lines.extend([0, 0])
+    dat_lines.extend(data)
+    dat_lines.append(2)
+    dat_lines.append(len(topo))
+    dat_lines.extend(topo)
+    dat_lines.extend([1, 0, 0, 0, 0])
+    dat_lines = [str(l) + "\n" for l in dat_lines]
+
+    return dat_lines
 
 
-def export_to_res2d(ert):
-    lines = parse_dat_lines(ert)
+def dat_file_export(dat_lines, fp):
 
-    with open(ert.fps["r2d_dat"], "w") as file:
-        file.writelines(lines)
+    with open(fp, "w") as file:
+        file.writelines(dat_lines)
 
 
 def format_r2d_output(ert):

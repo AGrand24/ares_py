@@ -26,8 +26,8 @@ def fig_qc_lines(prj, levels, ad, id_line):
         name = lvl[0][2]
         data = np.vstack(lvl)
         data[:, 1] = np.clip(data[:, 1], min=rrange[0], max=rrange[1])
-        marker = dict(color=colors[i], size=10)
-        line = dict(width=3)
+        marker = dict(color=colors[i], size=30)
+        line = dict(width=10)
         fig.add_trace(
             go.Scatter(
                 x=data[:, 0],
@@ -44,9 +44,10 @@ def fig_qc_lines(prj, levels, ad, id_line):
             x=0.02,
             y=0.98,
             orientation="h",
-            font=dict(size=20),
+            font=dict(size=100),
             xanchor="left",
             yanchor="top",
+            bgcolor="rgba(255, 255, 255, 0.5)",
         ),
         # yaxis_range=np.log10(yrange),
         yaxis_range=rrange,
@@ -55,30 +56,30 @@ def fig_qc_lines(prj, levels, ad, id_line):
     )
     # fig.update_yaxes(type="log")
 
-    width = ad["xrange"] * 10
-    height = width * ad["zrange"] / ad["xrange"]
+    width = ad["xrange"] * 100
+    height = width * ad["qcl_zrange"] / ad["xrange"]
 
     fig.update_layout(
-        width=5000,
-        height=5000 * ad["zrange"] / ad["xrange"],
+        width=width,
+        height=height,
         margin=dict(t=0, b=0, r=0, l=0),
         template="plotly_white",
         yaxis=dict(ticklabelposition="inside"),
     )
 
-    fig.update_yaxes(showgrid=True, gridwidth=6, tickfont=dict(size=25), nticks=20)
+    fig.update_yaxes(showgrid=True, gridwidth=10, tickfont=dict(size=50), nticks=20)
 
-    fig.update_yaxes(tickprefix="       ")
+    fig.update_yaxes(tickprefix="     ")
 
     fp = Path(prj.fps["qcl"], f"{str(id_line).zfill(3)}.png")
     print(fp)
     fig.write_image(fp, width=width, height=height)
 
-    lines = [(ad["xrange"] + 2) / width]
+    lines = [(ad["xrange"]) / width]
     lines.append(0.0)
     lines.append(0.0)
-    lines.append(-(ad["zrange"]) / height)
-    lines.append(ad["xmin"] - 2)
+    lines.append(-(ad["qcl_zrange"]) / height)
+    lines.append(ad["xmin"])
     lines.append(ad["zmax"])
 
     lines = [str(l) + "\n" for l in lines]
